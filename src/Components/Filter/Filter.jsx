@@ -5,67 +5,67 @@ import { FaStar } from "react-icons/fa";
 export const Filter = () => {
   return (
     <>
-      <div class="sidebar">
-        <div class="filter-heading">
+      <div className="sidebar">
+        <div className="filter-heading">
           <h3>Filters</h3>
-          <small class="clear-link">Clear All</small>
+          <small className="clear-link">Clear All</small>
         </div>
-        <div class="book-category">
-          <h4 class="cat-heading">Category</h4>
-          <label class="label-style" for="fiction">
+        <div className="book-category">
+          <h4 className="cat-heading">Category</h4>
+          <label className="label-style" htmlFor="fiction">
             <input type="checkbox" id="fiction" />
             Fiction
           </label>
-          <label class="label-style" for="non-fiction">
+          <label className="label-style" htmlFor="non-fiction">
             <input type="checkbox" id="non-fiction" />
             Non-fiction
           </label>
-          <label class="label-style" for="philosophy">
+          <label className="label-style" htmlFor="philosophy">
             <input type="checkbox" id="philosophy" />
             Philosophy
           </label>
-          <label class="label-style" for="family">
+          <label className="label-style" htmlFor="family">
             <input type="checkbox" id="family" />
             Family & Relationships
           </label>
-          <label class="label-style" for="self-help">
+          <label className="label-style" htmlFor="self-help">
             <input type="checkbox" id="self-help" />
             Self-help
           </label>
         </div>
-        <div class="rating-category">
-          <h4 class="cat-heading">Customer Ratings</h4>
-          <label class="label-style" for="four-star">
+        <div className="rating-category">
+          <h4 className="cat-heading">Customer Ratings</h4>
+          <label className="label-style" htmlFor="four-star">
             <input type="checkbox" id="four-star" />4
-            <FaStar /> & above
+            <FaStar className="rating-star" /> & above
           </label>
-          <label class="label-style" for="thre-star">
+          <label className="label-style" htmlFor="thre-star">
             <input type="checkbox" id="three-star" />3
-            <FaStar /> & above
+            <FaStar className="rating-star" /> & above
           </label>
-          <label class="label-style" for="two-star">
+          <label className="label-style" htmlFor="two-star">
             <input type="checkbox" id="two-star" />2
-            <FaStar /> & above
+            <FaStar className="rating-star" /> & above
           </label>
-          <label class="label-style" for="one-star">
+          <label className="label-style" htmlFor="one-star">
             <input type="checkbox" id="one-star" />1
-            <FaStar /> & above
+            <FaStar className="rating-star" /> & above
           </label>
         </div>
-        <div class="price-category">
-          <h4 class="cat-heading">Sort by pricing</h4>
-          <label class="label-style" for="lth">
+        <div className="price-category">
+          <h4 className="cat-heading">Sort by pricing</h4>
+          <label className="label-style" htmlFor="lth">
             <input id="lth" type="radio" name="price-sort" />
             Low To High
           </label>
-          <label class="label-style" for="htl">
+          <label className="label-style" htmlFor="htl">
             <input id="htl" type="radio" name="price-sort" />
             High To Low
           </label>
         </div>
-        <div class="price-range">
-          <h4 class="cat-heading">Price</h4>
-          <label class="label-style" for="priceInput">
+        <div className="price-range">
+          <h4 className="cat-heading">Price</h4>
+          <label className="label-style" htmlFor="priceInput">
             <input
               type="range"
               id="priceInput"
@@ -75,9 +75,9 @@ export const Filter = () => {
               oninput="showPrice.value = priceInput.value"
             />
           </label>
-          <p class="label-style">
+          <p className="label-style">
             ₹1 - ₹
-            <output class="show-price" id="showPrice">
+            <output className="show-price" id="showPrice">
               1000
             </output>
           </p>

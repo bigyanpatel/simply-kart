@@ -35,9 +35,11 @@
     align-items: flex-start;
     border-bottom: 1px solid var(--Primary_Color);
   }
-  
   .icon-star {
     color: var(--Primary_Color);
+  }
+  .rating-star{
+    color: var(--Color_Warn_500);
   }
   .label-style {
     font-size: 1rem;
