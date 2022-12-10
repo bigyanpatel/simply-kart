@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cart.css";
 import { FiMinus, FiPlus, FiTrash } from "react-icons/fi";
-import { Navbar } from "../../components/Navbar/Navbar";
+import { Navbar } from "../../barrelexport/Componentutil";
 
 export const Cart = () => {
   return (

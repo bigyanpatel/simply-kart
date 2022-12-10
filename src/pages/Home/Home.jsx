@@ -1,8 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Introimage from "../../assets/Introimage.svg";
-import { Card } from "../../components/Card/Card";
-import { Navbar } from "../../components/Navbar/Navbar";
+import { Navbar, Card } from "../../barrelexport/Componentutil";
 import { Link } from "react-router-dom";
 
 export const Home = () => {

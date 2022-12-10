@@ -1,6 +1,5 @@
 import React from "react";
-import { Filter } from "../../components/Filter/Filter";
-import { Navbar } from "../../components/Navbar/Navbar";
+import { Navbar, Filter } from "../../barrelexport/Componentutil";
 import { FiHeart } from "react-icons/fi";
 import "./Products.css";
 

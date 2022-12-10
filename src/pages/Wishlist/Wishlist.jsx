@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../../components/Navbar/Navbar";
+import { Navbar } from "../../barrelexport/Componentutil";
 import { FiTrash } from "react-icons/fi";
 import "./Wishlist.css";
 

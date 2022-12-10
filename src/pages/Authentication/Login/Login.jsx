@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Navbar } from "../../../components/Navbar/Navbar";
+import { Navbar } from "../../../barrelexport/Componentutil";
 import "./Login.css";
 
 export const Login = () => {

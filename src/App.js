@@ -1,3 +1,4 @@
+import MockmanEs from "mockman-js";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import {
@@ -7,7 +8,7 @@ import {
   Wishlist,
   Cart,
   Home,
-} from "./pages/Pageutil";
+} from "./barrelexport/Pageutil";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="mockman" element={<MockmanEs />} />
       </Routes>
     </div>
   );
