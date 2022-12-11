@@ -1,4 +1,3 @@
-export { Card } from "../components/Card/Card";
 export { Login } from "../pages/Authentication/Login/Login";
 export { Signup } from "../pages/Authentication/Signup/Signup";
 export { Cart } from "../pages/Cart/Cart";

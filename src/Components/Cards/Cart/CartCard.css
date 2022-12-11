@@ -1,4 +1,5 @@
 .card-hz {
+    border: 1px solid var(--Secondary_Border_Color);
     margin: 0 1rem;
     background-color: var(--Color_White);
     display: flex;

@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
-import "./signup.css";
+import "./Signup.css";
 
 export const Signup = () => {
   return (
@@ -52,12 +52,12 @@ export const Signup = () => {
             <FaRegEyeSlash classNameName="pd-hztl-sm fs-lg" />
           </div>
           <buttton className="btn is-solid">Sign Up</buttton>
-          <p className="align-center">
+          <div className="align-center">
             Already have an account?
             <Link to="/login">
-              <a className="auth-link">Login</a>
+              <p className="auth-link">Login</p>
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </>

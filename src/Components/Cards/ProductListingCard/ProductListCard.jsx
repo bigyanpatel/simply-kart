@@ -1,6 +1,6 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
-import "./ProductsListCard.css";
+import "./ProductListCard.css";
 
 export const ProductsListCard = () => {
   return (

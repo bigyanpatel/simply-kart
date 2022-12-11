@@ -27,19 +27,19 @@ export const CartCard = () => {
           </p>
           <div className="quantity-count">
             <button className="button-count-plus">
-              <span classNameName="flex">
+              <span className="flex">
                 <FiPlus />
               </span>
             </button>
             <p className="quantity-value">2</p>
             <button className="button-count-minus">
-              <span classNameName="flex">
+              <span className="flex">
                 <FiMinus />
               </span>
             </button>
           </div>
           <div className="card-button-container mt">
-            <span classNameName="dismiss-icon fs-lg">
+            <span className="dismiss-icon fs-lg">
               <FiTrash />
             </span>
             <button className="is-secondary pd-sm">Move to favourites</button>

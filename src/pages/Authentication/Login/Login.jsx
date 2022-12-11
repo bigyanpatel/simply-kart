@@ -30,16 +30,16 @@ export const Login = () => {
               <input id="remember-me" type="checkbox" />
               Remember me
             </label>
-            <a className="htmlForgot-link cursor">htmlForgot Password?</a>
+            <a href="" className="Forgot-link cursor">Forgot Password?</a>
           </div>
           <button className="btn is-solid">Login</button>
           <span className="text-or">Or</span>
-          <p className="align-center">
+          <div className="align-center">
             New user?
             <Link to="/signup">
-              <a className="auth-link cursor">Create an account</a>
+              <p className="auth-link cursor">Create an account</p>
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </>
