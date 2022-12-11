@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Introimage from "../../assets/Introimage.svg";
-import { Navbar, Card } from "../../barrelexport/Componentutil";
+import { Navbar, HomeCard } from "../../barrelexport/Componentutil";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const Home = () => {
   return (
@@ -26,39 +27,39 @@ export const Home = () => {
       </div>
       {/* App intrduction ends */}
 
-      <div class="grid-category">
+      <div className="grid-category">
         {/* <!-- || Books type starts--> */}
         <h2 className="section-heading center-text">Types</h2>
-        <div class="book-type">
-          <div class="type type-fiction">
+        <div className="book-type">
+          <div className="type type-fiction">
             <img
               src="https://n2.sdlcdn.com/imgs/e/h/m/Fiction-0ba2f.jpg"
               alt="no preview available"
             />
             <p>Fiction</p>
           </div>
-          <div class="type type-nonfiction">
+          <div className="type type-nonfiction">
             <img
               src="https://n2.sdlcdn.com/imgs/e/h/m/NonFiction-3fef2.jpg"
               alt="no preview available"
             />
             <p>Non-Fiction</p>
           </div>
-          <div class="type type-philosophy">
+          <div className="type type-philosophy">
             <img
               src="https://n4.sdlcdn.com/imgs/e/h/m/philosphy-ed2c5.jpg"
               alt="no preview available"
             />
             <p>Philosophy</p>
           </div>
-          <div class="type type-family">
+          <div className="type type-family">
             <img
               src="https://n3.sdlcdn.com/imgs/e/h/m/family-fcca1.jpg"
               alt="no preview available"
             />
             <p>Family & Relationship</p>
           </div>
-          <div class="type type-selfhelp">
+          <div className="type type-selfhelp">
             <img
               src="https://n2.sdlcdn.com/imgs/e/h/m/SelfHelp-eeb2f.jpg"
               alt="no preview available"
@@ -69,24 +70,24 @@ export const Home = () => {
         {/* <!-- || Books category ends --> */}
 
         {/* <!-- || Books trending starts --> */}
-        <h2 class="section-heading center-text">India trending</h2>
-        <div class="book-trending">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+        <h2 className="section-heading center-text">India trending</h2>
+        <div className="book-trending">
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
         </div>
         {/* <!-- || Books trending ends --> */}
 
         {/* <!-- || High selling books starts --> */}
-        <h2 class="section-heading center-text">High Selling Books</h2>
-        <div class="book-high-sell">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+        <h2 className="section-heading center-text">High Selling Books</h2>
+        <div className="book-high-sell">
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
+          <HomeCard />
         </div>
         {/* <!-- || High selling books ends --> */}
       </div>
