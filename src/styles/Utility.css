@@ -8,6 +8,9 @@
   .mg-top {
     margin-top: 1rem;
   }
+  .card {
+    border: none;
+  }
   .mr {
     margin-right: 5px;
   }

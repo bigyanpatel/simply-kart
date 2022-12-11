@@ -1,4 +1,5 @@
 import React from "react";
+import "./HomeCard.css";
 
 export const HomeCard = () => {
   return (
