@@ -4,16 +4,17 @@ import Introimage from "../../assets/Introimage.svg";
 import { Navbar, HomeCard } from "../../barrelexport/Componentutil";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useDataStore } from "../../contexts/DataStoreContext";
 
 export const Home = () => {
-  const [categories, setCategories] = useState([]);
-  const [homeProducts, setHomeProducts] = useState([]);
+  const { categories, setCategories, products, setProducts } = useDataStore();
+
   const [error, setError] = useState("");
 
   useEffect(() => {
     try {
       getCategories();
-      getHomeProducts();
+      getProducts();
     } catch (error) {
       setError("Server having issues");
     }
@@ -30,12 +31,12 @@ export const Home = () => {
     }
   };
 
-  const getHomeProducts = async () => {
+  const getProducts = async () => {
     try {
       const { data: productsData, status } = await axios.get("/api/products");
       status === 200
-        ? setHomeProducts([...productsData.products])
-        : setHomeProducts([]);
+        ? setProducts([...productsData.products])
+        : setProducts([]);
     } catch (error) {
       setError("Server having some issues!!!");
     }
@@ -62,7 +63,7 @@ export const Home = () => {
       </div>
       {/* App intrduction ends */}
 
-      {categories.length !== 0 && homeProducts.length !== 0 ? (
+      {categories.length !== 0 && products.length !== 0 ? (
         <div class="grid-category">
           <h2 className="section-heading center-text">Types</h2>
           <div class="book-type">
@@ -80,7 +81,7 @@ export const Home = () => {
           {/* <!-- || Books trending starts --> */}
           <h2 class="section-heading center-text">India trending</h2>
           <div class="book-trending">
-            {homeProducts.slice(0, 4).map((item) => (
+            {products.slice(0, 4).map((item) => (
               <HomeCard product={item} />
             ))}
           </div>
@@ -89,7 +90,7 @@ export const Home = () => {
           {/* <!-- || High selling books starts --> */}
           <h2 class="section-heading center-text">High Selling Books</h2>
           <div class="book-high-sell">
-            {homeProducts.slice(5, 9).map((item) => (
+            {products.slice(5, 9).map((item) => (
               <HomeCard product={item} />
             ))}
           </div>
