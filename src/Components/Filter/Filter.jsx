@@ -3,6 +3,7 @@ import "./Filter.css";
 import { FaStar } from "react-icons/fa";
 import { useFilter } from "../../contexts/FilterContext";
 import { initialState } from "../../barrelexport/Filterutil";
+import { actionTypes } from "../../helperFunctions/Filter/actionTypes";
 
 export const Filter = () => {
   const { filterState, filterDispatch } = useFilter();
@@ -14,6 +15,17 @@ export const Filter = () => {
     Family_and_relationship,
     Self_help,
   } = categories;
+  const {
+    CLEAR_ALL,
+    FILTER_BY_PRICE_RANGE,
+    SORT_BY,
+    FILTER_BY_FICTION,
+    FILTER_BY_NON_FICTION,
+    FILTER_BY_PHILOSOPHY,
+    FILTER_BY_FAMILY_AND_RELATIONSHIP,
+    FILTER_BY_SELF_HELP,
+    SORT_BY_RATING,
+  } = actionTypes;
 
   return (
     <>
