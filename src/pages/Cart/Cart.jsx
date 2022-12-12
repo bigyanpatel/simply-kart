@@ -1,8 +1,11 @@
 import React from "react";
 import "./Cart.css";
 import { CartCard, Navbar } from "../../barrelexport/Componentutil";
+import { CheckLoginService } from "../../Services/AuthService";
 
 export const Cart = () => {
+
+  CheckLoginService();
   return (
     <div>
       <Navbar />

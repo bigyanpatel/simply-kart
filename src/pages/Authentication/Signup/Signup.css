@@ -10,7 +10,12 @@
     padding: 0.5rem 1.5rem 1rem;
     box-shadow: RGBA(0, 0, 0, 0.24) 0px 3px 8px;
   }
+  .is-solid:disabled{
+    background-color: var(--Secondary_Border_Color);
+    color: var(--Secondary_Color);
+  }
   .text-signup {
+    user-select: none;
     margin: 1rem 0;
     text-align: center;
     font-size: 2rem;

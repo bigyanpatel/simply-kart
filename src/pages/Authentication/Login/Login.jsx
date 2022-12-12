@@ -1,38 +1,75 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
-import { FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useTogglePassword } from "../../../Hooks/useTogglePassword";
+import { useForm } from "../../../Hooks/useForm";
 import "./Login.css";
 
 export const Login = () => {
+  const { passwordToggle, togglePassword } = useTogglePassword();
+  const { loginHandler, signinData } = useAuth();
+  const { email, password } = signinData;
+  const {formHandler} = useForm();
+
   return (
     <>
       <Navbar />
       <div className="flex-center">
         <div className="login-card">
           <h1 className="text-login">Login</h1>
-          <div className="input-icon-container input-primary">
-            <AiOutlineMail className="input-icon" />
-            <input
-              type="email"
-              className="input"
-              placeholder="e.g abc@gmail.com"
-            />
-          </div>
-          <div className="input-icon-container input-primary">
-            <AiOutlineLock className="input-icon" />
-            <input type="email" className="input" placeholder="e.g abc123" />
-            <FaRegEyeSlash className="cursor" />
-          </div>
-          <div className="horizontal-div">
-            <label className="cursor" htmlFor="remember-me">
-              <input id="remember-me" type="checkbox" />
-              Remember me
-            </label>
-            <a href="" className="Forgot-link cursor">Forgot Password?</a>
-          </div>
-          <button className="btn is-solid">Login</button>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="input-icon-container input-primary">
+              <AiOutlineMail className="fs-lg" />
+              <input
+                value={email}
+                required
+                name="email"
+                type="email"
+                className="input"
+                placeholder="e.g abc@gmail.com"
+                onChange={formHandler}
+              />
+            </div>
+            <div className="input-icon-container input-primary">
+              <AiOutlineLock className="fs-lg" />
+              <input
+                value={password}
+                required
+                name="password"
+                type={passwordToggle.type}
+                className="input"
+                placeholder="e.g abc123"
+                onChange={formHandler}
+              />
+              {passwordToggle.isEyeIcon ? (
+                <FaRegEye className="cursor fs-lg" onClick={togglePassword} />
+              ) : (
+                <FaRegEyeSlash
+                  className="cursor fs-lg"
+                  onClick={togglePassword}
+                />
+              )}
+            </div>
+            <div className="horizontal-div">
+              <label className="cursor" htmlFor="remember-me">
+                <input id="remember-me" type="checkbox" />
+                Remember me
+              </label>
+              <a className="forgot-link cursor">Forgot Password?</a>
+            </div>
+            <div className="btn-area">
+              <button onClick={loginHandler} className="btn is-secondary">
+                Login With Test Credentials.
+              </button>
+              <button onClick={loginHandler} className="btn is-solid">
+                Login
+              </button>
+            </div>
+          </form>
           <span className="text-or">Or</span>
           <div className="align-center">
             New user?

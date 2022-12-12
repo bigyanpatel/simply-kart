@@ -1,9 +1,18 @@
 import React from "react";
-import { FiHeart, FiSearch, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import {
+  FiHeart,
+  FiLogIn,
+  FiLogOut,
+  FiSearch,
+  FiShoppingCart,
+} from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "./Navbar.css";
 
 export const Navbar = () => {
+  const { token, logoutHandler } = useAuth();
+
   return (
     <nav className="navigation">
       <span className="hamburger-icon">
@@ -30,27 +39,34 @@ export const Navbar = () => {
         />
       </div>
       <div className="nav-right-section">
+        {!token ? (
+          <Link to="/login">
+            <FiLogIn className="user-icon fs-xlg" />
+          </Link>
+        ) : (
+          <FiLogOut
+            onClick={logoutHandler}
+            className="user-icon cursor fs-xlg"
+          />
+        )}
         <ul className="secondary-list">
           <li className="favorites-list-item">
-            <Link to="/wishlist">
-              <span className="heart-icon fs-xlg">
+            <Link to={token ? "/wishlist" : "/login"}>
+              <span className="heart-icon fs-xlg flex-center">
                 <FiHeart className="cursor" />
               </span>
             </Link>
             <span className="favourite-badge badge">4</span>
           </li>
           <li className="cart-list-item">
-            <Link to="/cart">
-              <span className="shop-icon fs-xlg">
+            <Link to={token ? "/cart" : "/login"}>
+              <span className="shop-icon fs-xlg flex-center">
                 <FiShoppingCart className="cursor" />
               </span>
             </Link>
             <span className="cart-badge badge">6</span>
           </li>
         </ul>
-        <Link to="/login">
-          <button className="btn is-solid">Login</button>
-        </Link>
       </div>
     </nav>
   );
