@@ -23,7 +23,7 @@ export const ProductsListCard = ({ product }) => {
       <div className="card-body flex-center">
         <p className="card-title center-text">{title}</p>
         <small className="not">{author}</small>
-        <span class="rating high-rating mg-vrtl-sm">
+        <span className="rating high-rating mg-vrtl-sm">
           <span>{ratings}</span>
           <FaStar className="mg-l" />
         </span>

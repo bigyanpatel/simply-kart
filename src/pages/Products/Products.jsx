@@ -47,8 +47,8 @@ export const Products = () => {
       <main className="main-wrapper">
         <Filter />
         <div className="main">
-          {resultData.map((item) => (
-            <ProductsListCard product={item} />
+          {resultData.map((item, index) => (
+            <ProductsListCard key={index} product={item} />
           ))}
         </div>
       </main>
