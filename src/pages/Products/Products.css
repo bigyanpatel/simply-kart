@@ -1,0 +1,71 @@
+.main-wrapper {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas: "sidebar main main main main";
+}
+.sidebar,
+.main {
+  padding: 1rem;
+}
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--Color_White);
+}
+.main {
+  grid-area: main;
+  display: grid;
+  gap: 20px;
+  background-color: var(--Color_White);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Navbar section */
+.logo {
+  width: 100px;
+  max-width: 100%;
+}
+.navigation {
+  border: none;
+}
+.login-link {
+  color: var(--Color_White);
+}
+.secondary-list i {
+  cursor: pointer;
+}
+.secondary-list i:hover {
+  color: var(--Primary_Hover_Color);
+}
+
+
+
+@media screen and (max-width: 530px) {
+  .sidebar {
+    display: none;
+  }
+  .main-wrapper {
+    grid-template-columns: auto;
+    grid-template-areas: "main";
+  }
+  .main {
+    grid-template-columns: auto;
+    justify-content: center;
+  }
+  .search-icon {
+    color: var(--Primary_Color);
+    font-size: 1.25rem;
+    padding: 1rem;
+    display: block;
+    margin-left: auto;
+  }
+  .login-link {
+    display: none;
+  }
+  .hamburger-icon {
+    display: block;
+  }
+  .search-bar {
+    display: none;
+  }
+}

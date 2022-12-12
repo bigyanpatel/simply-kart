@@ -1,0 +1,91 @@
+/* Introduction section */
+
+.grid-category {
+    background-color: var(--Color_White);
+  }
+  .app-intro {
+    background-color: var(--Primary_Color_100);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  .intro-header,
+  .intro-quote {
+    margin: 0;
+    font-weight: 100;
+  }
+  .intro-header {
+    color: var(--Primary_Hover_Color);
+  }
+  .image {
+    max-width: 40%;
+  }
+  .intro-section {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .heading {
+    border-bottom: 1px solid var(--Secondary_Border_Color);
+    font-size: 1.25rem;
+    padding: 1rem;
+    line-height: 2rem;
+    background-color: var(--Color_White);
+  }
+  .book-type,
+  .book-trending,
+  .book-high-sell {
+    margin: 0 2rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  .type:hover {
+    transform: scale(1.2);
+  }
+  .type-family p {
+    max-width: 50%;
+    text-align: center;
+  }
+  .main-heading {
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .section-heading {
+    font-weight: 400;
+    color: var(--Primary_Color);
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 470px) {
+    .book-category,
+    .book-trending,
+    .book-high-sell {
+      grid-template-columns: auto;
+      justify-content: center;
+    }
+  }
+  
+  @media screen and (max-width: 750px) {
+    .image {
+      display: none;
+    }
+    .intro-section {
+      text-align: center;
+    }
+  }

@@ -1,0 +1,45 @@
+.card-hz {
+    border: 1px solid var(--Secondary_Border_Color);
+    margin: 0 1rem;
+    background-color: var(--Color_White);
+    display: flex;
+  }
+  .horizontal-image-container {
+    height: auto;
+    padding: 1rem;
+  }
+  .hr-image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
+  .quantity-count {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+  }
+  .button-count-plus,
+  .button-count-minus {
+    font-size: 1.25rem;
+    border-radius: 3px;
+    border: 2px solid var(--Secondary_Border_Color);
+    background: transparent;
+  }
+  
+  .btn:hover {
+    color: var(--Color_White);
+  }
+  .button-count-plus {
+    color: var(--Color_Success_600);
+  }
+  
+  .button-count-minus {
+    color: var(--Color_Danger_600);
+  }
+  .quantity-value {
+    font-size: 1.25rem;
+    padding: 0 1rem;
+  }
+  .mt {
+    margin-top: 3rem;
+  }

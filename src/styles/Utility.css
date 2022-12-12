@@ -1,0 +1,45 @@
+:root {
+    --navbar_shadow: 2px 1px 5px var(--Primary_Color_100);
+    --cirular_border: 50%;
+  }
+  .cursor {
+    cursor: pointer;
+  }
+  .mg-top {
+    margin-top: 1rem;
+  }
+  .card {
+    border: none;
+  }
+  .mr {
+    margin-right: 5px;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dismiss-icon {
+    color: var(--Color_Danger_500);
+  }
+  .card-icon {
+    top: 3px;
+    right: 3px;
+    position: absolute;
+    display: flex;
+    padding: 5px;
+    border-radius: var(--cirular_border);
+    background-color: var(--Color_White);
+  }

@@ -1,0 +1,14 @@
+.card {
+  border: 1px solid var(--Secondary_Border_Color);
+  background-color: var(--Color_White);
+}
+.card-sell-price {
+  margin-top: 5px;
+}
+.card-image-container {
+  padding: 0;
+  position: relative;
+}
+.favourites {
+  color: var(--Color_Danger_500);
+}

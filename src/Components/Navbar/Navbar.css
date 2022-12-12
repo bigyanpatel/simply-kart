@@ -1,0 +1,36 @@
+.navigation {
+    background-color: var(--Color_White);
+    box-shadow: var(--navbar_shadow);
+  }
+  
+  .logo-text {
+    margin-left: 1rem;
+    color: var(--Primary_Color);
+  }
+  .searchbox-icon {
+    display: flex;
+    color: var(--Secondary_Color);
+  }
+  .heart-icon,
+  .shop-icon {
+    color: var(--Primary_Color);
+  }
+  .cart-badge {
+    bottom: 1.3rem;
+  }
+  .favourite-badge {
+    bottom: 1.3rem;
+    left: 2rem;
+  }
+  .search-input {
+    width: 100%;
+  }
+  .search-icon {
+    padding: 0;
+  }
+  .search-bar {
+    max-width: 20rem;
+  }
+  .login-link {
+    text-transform: uppercase;
+  }

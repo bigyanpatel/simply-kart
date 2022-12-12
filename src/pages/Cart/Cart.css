@@ -1,0 +1,70 @@
+.cart-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 30rem));
+  justify-content: center;
+  gap: 10px 20px;
+}
+.card-item {
+  display: grid;
+  gap: 10px;
+}
+
+/* Bill item */
+
+.bill {
+  margin: 0 1rem;
+  background-color: var(--Color_White);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bill-heading {
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid var(--Primary_Color);
+}
+.bill-heading h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.bill-info {
+  padding: 1rem 0 0 0;
+  border-bottom: 1px solid var(--Primary_Color);
+}
+.col-80 {
+  opacity: 0.7;
+}
+.total-text,
+.total-value {
+  font-size: 1.25rem;
+}
+.is-secondary {
+  background-color: var(--Secondary_Color);
+  color: var(--Color_White);
+}
+.is-secondary:hover {
+  background-color: var(--Secondary_Hover_Color);
+}
+
+.msg {
+  padding: 1rem 0 4px 0;
+}
+.bill-info div {
+  padding-bottom: 10px;
+}
+.row-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-green {
+  color: var(--Color_Success_600);
+}
+.text-yellow {
+  font-weight: 800;
+  color: var(--Color_Warn_500);
+}
+.text-red {
+  font-weight: 800;
+  color: var(--Color_Danger_500);
+}
