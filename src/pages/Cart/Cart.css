@@ -4,6 +4,9 @@
   justify-content: center;
   gap: 10px 20px;
 }
+.horizontal-image-container {
+  max-width: 40%;
+}
 .card-item {
   display: grid;
   gap: 10px;
