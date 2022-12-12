@@ -15,7 +15,7 @@ export const products = [
     author: "A.P.J abdual kalam",
     sellPrice: "129",
     costPrice: "197",
-    discount: "33",
+    discount: "33%",
     ratings: "4.5",
     categoryName: "Fiction",
   },
