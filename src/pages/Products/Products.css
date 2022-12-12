@@ -38,8 +38,6 @@
   color: var(--Primary_Hover_Color);
 }
 
-
-
 @media screen and (max-width: 530px) {
   .sidebar {
     display: none;

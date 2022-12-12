@@ -1,32 +1,38 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
-import "./ProductListCard.css";
+import { FaStar } from "react-icons/fa";
 
-export const ProductsListCard = () => {
+import "./ProductsListCard.css";
+
+export const ProductsListCard = ({ product }) => {
+  const { title, imgSrc, author, costPrice, sellPrice, discount, ratings } =
+    product;
+
   return (
     <div className="card">
       <div className="card-image-container">
         <img
           className="image-responsive"
-          src="https://n1.sdlcdn.com/imgs/g/p/h/large/The-Secret-Law-of-Blessing-SDL722248518-1-1c081.png"
+          src={imgSrc}
           alt="No preview available"
         />
         <span className="card-icon favourites fs-lg">
           <FiHeart />
         </span>
       </div>
-      <div className="card-body">
-        <h3 className="card-title">A line in the river</h3>
-        <small className="not">By John Willy</small>
-        <p className="card-description">
-          Think twice, write it on paper and do it in actions.
+      <div className="card-body flex-center">
+        <p className="card-title center-text">{title}</p>
+        <small className="not">{author}</small>
+        <span class="rating high-rating mg-vrtl-sm">
+          <span>{ratings}</span>
+          <FaStar className="mg-l" />
+        </span>
+        <p className="card-sell-price center-text pd-hztl-sm">
+          <span>₹{sellPrice}</span>
+          <span className="card-cost-price">₹{costPrice}</span>
+          <span className="card-discount">{discount}off</span>
         </p>
-        <p className="card-sell-price">
-          <span>₹325</span>
-          <span className="card-cost-price">₹650</span>
-          <span className="card-discount">50%off</span>
-        </p>
-        <button className="btn is-solid is-cart">Add to Cart</button>
+        <button className="btn is-solid is-cart wd-100">Add to Cart</button>
       </div>
     </div>
   );
