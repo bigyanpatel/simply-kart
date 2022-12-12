@@ -5,7 +5,6 @@ import { useAuth } from "../contexts/AuthContext";
 const CheckLoginService = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
-  console.log(token);
 
   useEffect(() => {
     !token && navigate("/login");

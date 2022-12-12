@@ -6,12 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
+import { useForm } from "../../../Hooks/useForm";
 import "./Login.css";
 
 export const Login = () => {
   const { passwordToggle, togglePassword } = useTogglePassword();
   const { loginHandler, signinData } = useAuth();
   const { email, password } = signinData;
+  const {formHandler} = useForm();
 
   return (
     <>
@@ -29,6 +31,7 @@ export const Login = () => {
                 type="email"
                 className="input"
                 placeholder="e.g abc@gmail.com"
+                onChange={formHandler}
               />
             </div>
             <div className="input-icon-container input-primary">
@@ -40,6 +43,7 @@ export const Login = () => {
                 type={passwordToggle.type}
                 className="input"
                 placeholder="e.g abc123"
+                onChange={formHandler}
               />
               {passwordToggle.isEyeIcon ? (
                 <FaRegEye className="cursor fs-lg" onClick={togglePassword} />

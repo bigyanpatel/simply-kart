@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
 import { useForm } from "../../../Hooks/useForm";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import "./Signup.css";
+import { useAuth } from "../../../contexts/AuthContext";
 
 export const Signup = () => {
-  const navigate = useNavigate();
   const {
     passwordToggle,
     confirmPasswordToggle,
@@ -18,17 +18,7 @@ export const Signup = () => {
   } = useTogglePassword();
 
   const { formData, errors, formHandler } = useForm();
-
-  const signupHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("/api/auth/signup", formData);
-      // localStorage.setItem("token", res.data.encodedToken);
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { signupHandler } = useAuth();
 
   return (
     <>
@@ -38,7 +28,7 @@ export const Signup = () => {
       <div className="flex-center">
         <div className="signup-card">
           <h1 className="text-signup">Signup</h1>
-          <form onSubmit={(e) => signupHandler(e)}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="name-section">
               <input
                 onChange={formHandler}
@@ -114,6 +104,7 @@ export const Signup = () => {
             </div>
             {errors.isMatch && <p className="error-msg">{errors.isMatch}</p>}
             <button
+              onClick={signupHandler}
               disabled={
                 Object.entries(errors).length === 0 &&
                 Object.entries(formData).length === 5
@@ -125,12 +116,12 @@ export const Signup = () => {
               Sign Up
             </button>
           </form>
-          <p className="align-center">
+          <div className="align-center">
             Already have an account?
             <Link to="/login">
-              <a className="auth-link">Login</a>
+              <p className="auth-link">Login</p>
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </>
