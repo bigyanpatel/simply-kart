@@ -1,47 +1,136 @@
+import axios from "axios";
 import React from "react";
-import { FiMinus, FiPlus, FiTrash } from "react-icons/fi";
+import { FiMinus, FiPlus } from "react-icons/fi";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useCart } from "../../../contexts/CartContext";
 import "./CartCard.css";
 
-export const CartCard = () => {
+export const CartCard = ({ cartItem }) => {
+  const {
+    _id,
+    title,
+    imgSrc,
+    author,
+    quantity,
+    costPrice,
+    sellPrice,
+    discount,
+  } = cartItem;
+  const { token } = useAuth();
+  const { cartState, cartDispatch } = useCart();
+
+  const removeFromCartHandler = async () => {
+    try {
+      const res = await axios.delete(`/api/user/cart/${_id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (res.status === 200 || res.status === 201) {
+        cartDispatch({
+          type: "REMOVE_FROM_CART",
+          payload: res.data.cart,
+          cartItem,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const incrementQuantity = async () => {
+    try {
+      const res = await axios.post(
+        `/api/user/cart/${_id}`,
+        {
+          action: {
+            type: "increment",
+          },
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      if (res.status === 200 || res.status === 201) {
+        cartDispatch({
+          type: "ADD_TO_CART",
+          payload: res.data.cart,
+          product: cartItem,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const decrementQuantity = async () => {
+    if (quantity === 1) {
+      removeFromCartHandler();
+      return;
+    } else {
+      try {
+        const res = await axios.post(
+          `/api/user/cart/${_id}`,
+          {
+            action: {
+              type: "decrement",
+            },
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        if (res.status === 200 || res.status === 201) {
+          cartDispatch({
+            type: "DECREMENT_QUANTITY",
+            payload: res.data.cart,
+            product: cartItem,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div className="card-hz">
       <div className="horizontal-image-container">
-        <img
-          className="hr-image"
-          src="https://n1.sdlcdn.com/imgs/g/p/h/large/The-Secret-Law-of-Blessing-SDL722248518-1-1c081.png"
-          alt="No preview available"
-        />
+        <img className="hr-image" src={imgSrc} alt="No preview available" />
       </div>
       <div className="card-body-wrapper">
         <div className="card-body">
-          <h3 className="card-title">A Line in the river</h3>
-          <small className="not">By John Willy</small>
-          <p className="card-description">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error,
-            magnam?
-          </p>
+          <h3 className="card-title">{title}</h3>
+          <small>{author}</small>
           <p className="card-sell-price">
-            <span>₹325</span>
-            <span className="card-cost-price">₹650</span>
-            <span className="card-discount">50%off</span>
+            <span>{sellPrice}₹</span>
+            <span className="card-cost-price">{costPrice}₹</span>
+            <span className="card-discount">{discount}%off</span>
           </p>
           <div className="quantity-count">
-            <button className="button-count-plus">
+            <button onClick={incrementQuantity} className="button-count-plus">
               <span className="flex">
                 <FiPlus />
               </span>
             </button>
-            <p className="quantity-value">2</p>
-            <button className="button-count-minus">
+            <p className="quantity-value">{quantity}</p>
+            <button onClick={decrementQuantity} className="button-count-minus">
               <span className="flex">
                 <FiMinus />
               </span>
             </button>
           </div>
           <div className="card-button-container mt">
-            <span className="dismiss-icon fs-lg">
-              <FiTrash />
-            </span>
+            <button
+              onClick={removeFromCartHandler}
+              className="btn is-btn-danger is-outlined pd-sm"
+            >
+              Remove from cart
+            </button>
             <button className="is-secondary pd-sm">Move to favourites</button>
           </div>
         </div>

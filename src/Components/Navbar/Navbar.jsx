@@ -6,12 +6,17 @@ import {
   FiSearch,
   FiShoppingCart,
 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { useCart } from "../../contexts/CartContext";
+import { useWishList } from "../../contexts/WishListContext";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const { token, logoutHandler } = useAuth();
+  const { userWishList } = useWishList();
+  const { cartState } = useCart();
+  const { cartStatus } = cartState;
 
   return (
     <nav className="navigation">
@@ -56,7 +61,11 @@ export const Navbar = () => {
                 <FiHeart className="cursor" />
               </span>
             </Link>
-            <span className="favourite-badge badge">4</span>
+            {userWishList.length !== 0 && (
+              <span className="favourite-badge badge">
+                {userWishList.length}
+              </span>
+            )}
           </li>
           <li className="cart-list-item">
             <Link to={token ? "/cart" : "/login"}>
@@ -64,7 +73,9 @@ export const Navbar = () => {
                 <FiShoppingCart className="cursor" />
               </span>
             </Link>
-            <span className="cart-badge badge">6</span>
+            {cartStatus !== 0 && (
+              <span className="cart-badge badge">{cartState.cartStatus}</span>
+            )}
           </li>
         </ul>
       </div>

@@ -1,20 +1,26 @@
 .card {
   padding: 0 1rem;
-  border: 1px solid var(--Secondary_Border_Color);
   background-color: var(--Color_White);
 }
 .card:hover {
   box-shadow: var(--card_shadow);
 }
-.rating{
+.rating {
   align-self: center;
+}
+.filled-favourites {
+  color: var(--Color_Danger_500);
+}
+.favourites:hover {
+  transition: 0.3s ease-in;
+  background-color: var(--Color_Danger_200);
 }
 .image-responsive {
   max-width: 70%;
   height: 40vh;
   object-fit: contain;
 }
-.card-body{
+.card-body {
   padding: 0;
 }
 .card-title {
