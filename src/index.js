@@ -20,7 +20,7 @@ root.render(
   <React.StrictMode>
     <Router>
       <AuthContextProvider>
-      <CartProvider>
+        <CartProvider>
           <WishListProvider>
             <FilterProvider>
               <DataStoreProvider>
