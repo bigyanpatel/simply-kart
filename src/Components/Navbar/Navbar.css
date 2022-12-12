@@ -1,36 +1,41 @@
 .navigation {
-    background-color: var(--Color_White);
-    box-shadow: var(--navbar_shadow);
-  }
-  
-  .logo-text {
-    margin-left: 1rem;
-    color: var(--Primary_Color);
-  }
-  .searchbox-icon {
-    display: flex;
-    color: var(--Secondary_Color);
-  }
-  .heart-icon,
-  .shop-icon {
-    color: var(--Primary_Color);
-  }
-  .cart-badge {
-    bottom: 1.3rem;
-  }
-  .favourite-badge {
-    bottom: 1.3rem;
-    left: 2rem;
-  }
-  .search-input {
-    width: 100%;
-  }
-  .search-icon {
-    padding: 0;
-  }
-  .search-bar {
-    max-width: 20rem;
-  }
-  .login-link {
-    text-transform: uppercase;
-  }
+  box-shadow: var(--navbar_shadow);
+  justify-content: space-around;
+}
+.secondary-list {
+  padding: 0 20px;
+}
+.logo-text {
+  margin-left: 1rem;
+  color: var(--Primary_Color);
+}
+.searchbox-icon {
+  display: flex;
+  color: var(--Secondary_Color);
+}
+.user-icon {
+  color: var(--Primary_Color);
+}
+.heart-icon,
+.shop-icon {
+  color: var(--Primary_Color);
+}
+.cart-badge {
+  bottom: 1.1rem;
+}
+.favourite-badge {
+  bottom: 1.1rem;
+  left: 2.2rem;
+}
+.search-input {
+  width: 100%;
+}
+.search-icon {
+  padding: 0;
+}
+.search-bar {
+  max-width: 20rem;
+}
+.login-link {
+  text-transform: uppercase;
+}
