@@ -38,8 +38,18 @@
   .icon-star {
     color: var(--Primary_Color);
   }
-  .rating-star{
+  .rating-star {
     color: var(--Color_Warn_500);
+  }
+  .slider{
+    width: 100%;
+  }
+  .range-label{
+    color: var(--Primary_Color);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .label-style {
     font-size: 1rem;

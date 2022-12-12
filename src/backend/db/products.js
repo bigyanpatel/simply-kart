@@ -15,8 +15,8 @@ export const products = [
     author: "A.P.J abdual kalam",
     sellPrice: "129",
     costPrice: "197",
-    discount: "33",
-    ratings: "4.6",
+    discount: "33%",
+    ratings: "4.5",
     categoryName: "Fiction",
   },
   {
@@ -29,8 +29,8 @@ export const products = [
     sellPrice: "125",
     costPrice: "175",
     discount: "28%",
-    ratings: "4.5",
-    categoryName: "Family-and-relationShip",
+    ratings: "3.5",
+    categoryName: "Family_and_relationship",
   },
   {
     _id: uuid(),
@@ -42,8 +42,8 @@ export const products = [
     costPrice: "90",
     sellPrice: "150",
     discount: "40%",
-    ratings: "4.5",
-    categoryName: "Family-and-relationship",
+    ratings: "2.8",
+    categoryName: "Family_and_relationship",
   },
   {
     _id: uuid(),
@@ -55,8 +55,8 @@ export const products = [
     costPrice: "157",
     sellPrice: "195",
     discount: "19%",
-    ratings: "4.3",
-    categoryName: "Family-and-relationship",
+    ratings: "1.9",
+    categoryName: "Family_and_relationship",
   },
   {
     _id: uuid(),
@@ -68,8 +68,8 @@ export const products = [
     costPrice: "99",
     sellPrice: "199",
     discount: "50%",
-    ratings: "4.5",
-    categoryName: "Self-Help",
+    ratings: "3.1",
+    categoryName: "Self_help",
   },
   // break
   {
@@ -82,7 +82,7 @@ export const products = [
     costPrice: "127",
     sellPrice: "275",
     discount: "53%",
-    ratings: "4.5",
+    ratings: "2.9",
     categoryName: "Philosophy",
   },
   {
@@ -96,7 +96,7 @@ export const products = [
     sellPrice: "399",
     discount: "45%",
     ratings: "4.6",
-    categoryName: "Self-help",
+    categoryName: "Self_help",
   },
   {
     _id: uuid(),
@@ -108,7 +108,7 @@ export const products = [
     costPrice: "110",
     sellPrice: "199",
     discount: "44%",
-    ratings: "4.5",
+    ratings: "4",
     categoryName: "Fiction",
   },
   {
@@ -121,8 +121,8 @@ export const products = [
     costPrice: "171",
     sellPrice: "299",
     discount: "42%",
-    ratings: "4.6",
-    categoryName: "Non-fiction",
+    ratings: "3.2",
+    categoryName: "Non_fiction",
   },
   {
     _id: uuid(),
@@ -134,8 +134,8 @@ export const products = [
     costPrice: "207",
     sellPrice: "299",
     discount: "30%",
-    ratings: "4.4",
-    categoryName: "Self-help",
+    ratings: "2.6",
+    categoryName: "Self_help",
   },
   {
     _id: uuid(),
@@ -147,7 +147,7 @@ export const products = [
     costPrice: "325",
     sellPrice: "599",
     discount: "45%",
-    ratings: "4.5",
+    ratings: "2.1",
     categoryName: "Philosophy",
   },
   {
@@ -160,8 +160,8 @@ export const products = [
     costPrice: "140",
     sellPrice: "250",
     discount: "44%",
-    ratings: "4.6",
-    categoryName: "Non-fiction",
+    ratings: "3",
+    categoryName: "Non_fiction",
   },
   {
     _id: uuid(),
@@ -173,8 +173,8 @@ export const products = [
     costPrice: "207",
     sellPrice: "299",
     discount: "30%",
-    ratings: "4.4",
-    categoryName: "Self-help",
+    ratings: "1.7",
+    categoryName: "Self_help",
   },
   {
     _id: uuid(),
@@ -186,8 +186,8 @@ export const products = [
     costPrice: "140",
     sellPrice: "199",
     discount: "29%",
-    ratings: "4.5",
-    categoryName: "Self-help",
+    ratings: "3.9",
+    categoryName: "Self_help",
   },
   {
     _id: uuid(),
@@ -199,7 +199,7 @@ export const products = [
     costPrice: "444",
     sellPrice: "595",
     discount: "25%",
-    ratings: "4.4",
+    ratings: "4.2",
     categoryName: "Philosophy",
   },
   {
@@ -212,8 +212,8 @@ export const products = [
     costPrice: "289",
     sellPrice: "499",
     discount: "42%",
-    ratings: "4.5",
-    categoryName: "Non-Fiction",
+    ratings: "4.9",
+    categoryName: "Non_fiction",
   },
   {
     _id: uuid(),
@@ -225,7 +225,7 @@ export const products = [
     costPrice: "95",
     sellPrice: "175",
     discount: "45%",
-    ratings: "4.3",
+    ratings: "3.3",
     categoryName: "Fiction",
   },
   {
@@ -239,7 +239,7 @@ export const products = [
     costPrice: "109",
     sellPrice: "175",
     discount: "37%",
-    ratings: "4.5",
+    ratings: "2.5",
     categoryName: "Fiction",
   },
   {
@@ -253,7 +253,7 @@ export const products = [
     sellPrice: "299",
     discount: "36%",
     ratings: "4.7",
-    categoryName: "Non-fiction",
+    categoryName: "Non_fiction",
   },
   {
     _id: uuid(),
@@ -265,7 +265,7 @@ export const products = [
     costPrice: "117",
     sellPrice: "150",
     discount: "22%",
-    ratings: "4.5",
-    categoryName: "Non-fiction",
+    ratings: "1.4",
+    categoryName: "Non_fiction",
   },
 ];

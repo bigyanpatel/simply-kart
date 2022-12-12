@@ -27,7 +27,7 @@ export const Signup = () => {
               placeholder="Lastname*"
             />
           </div>
-          <div classNameName="mg-top input-icon-container-su input-primary">
+          <div className="mg-top input-icon-container-su input-primary">
             <input
               id="email"
               className="input"
@@ -41,7 +41,7 @@ export const Signup = () => {
               className="input pd-sm"
               placeholder="Passowrd*"
             />
-            <FaRegEyeSlash classNameName="pd-hztl-sm fs-lg" />
+            <FaRegEyeSlash className="pd-hztl-sm fs-lg" />
           </div>
           <div className="mg-top input-icon-container-su input-primary">
             <input
@@ -49,7 +49,7 @@ export const Signup = () => {
               className="input pd-sm"
               placeholder="Confirm password*"
             />
-            <FaRegEyeSlash classNameName="pd-hztl-sm fs-lg" />
+            <FaRegEyeSlash className="pd-hztl-sm fs-lg" />
           </div>
           <buttton className="btn is-solid">Sign Up</buttton>
           <div className="align-center">

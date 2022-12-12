@@ -64,12 +64,12 @@ export const Home = () => {
       {/* App intrduction ends */}
 
       {categories.length !== 0 && products.length !== 0 ? (
-        <div class="grid-category">
+        <div className="grid-category">
           <h2 className="section-heading center-text">Types</h2>
-          <div class="book-type">
-            {categories.map((item) => {
+          <div className="book-type">
+            {categories.map((item, index) => {
               return (
-                <div class="type type-fiction">
+                <div key={index} className="type type-fiction">
                   <img src={item.imgSrc} alt="no preview available" />
                   <p>{item.categoryName}</p>
                 </div>
@@ -79,19 +79,19 @@ export const Home = () => {
           {/* <!-- || Books category ends --> */}
 
           {/* <!-- || Books trending starts --> */}
-          <h2 class="section-heading center-text">India trending</h2>
-          <div class="book-trending">
-            {products.slice(0, 4).map((item) => (
-              <HomeCard product={item} />
+          <h2 className="section-heading center-text">India trending</h2>
+          <div className="book-trending">
+            {products.slice(0, 4).map((item, index) => (
+              <HomeCard key={index} product={item} />
             ))}
           </div>
           {/* <!-- || Books trending ends --> */}
 
           {/* <!-- || High selling books starts --> */}
-          <h2 class="section-heading center-text">High Selling Books</h2>
-          <div class="book-high-sell">
-            {products.slice(5, 9).map((item) => (
-              <HomeCard product={item} />
+          <h2 className="section-heading center-text">High Selling Books</h2>
+          <div className="book-high-sell">
+            {products.slice(5, 9).map((item, index) => (
+              <HomeCard key={index} product={item} />
             ))}
           </div>
           {/* <!-- || High selling books ends --> */}

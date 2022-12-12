@@ -1,15 +1,22 @@
 :root {
     --navbar_shadow: 2px 1px 5px var(--Primary_Color_100);
+    --card_shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px var(--Secondary_Color);
     --cirular_border: 50%;
   }
   .cursor {
     cursor: pointer;
+  }
+  .mg-l {
+    margin-left: 3px;
   }
   .mg-top {
     margin-top: 1rem;
   }
   .card {
     border: none;
+  }
+  .wd-100{
+    width: 100%;
   }
   .mr {
     margin-right: 5px;
