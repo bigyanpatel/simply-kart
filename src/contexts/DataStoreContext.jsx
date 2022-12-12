@@ -1,14 +1,36 @@
 import { createContext, useContext, useState } from "react";
 
-const DataStoreContext = createContext();
 
-const DataStoreProvider = ({ children }) => {
+  const DataStoreContext = createContext();
+
+  const DataStoreProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [showLoader, setShowLoader] = useState(true);
+
+  const toastProps = {
+    theme: "dark",
+    closeOnClick: true,
+    autoClose: 1000,
+    pauseOnHover: true,
+    position: "bottom-center",
+  };
+
+  setTimeout(() => {
+    setShowLoader(false);
+  }, 1500);
 
   return (
     <DataStoreContext.Provider
-      value={{ categories, setCategories, products, setProducts }}
+    value={{
+      toastProps,
+      showLoader,
+      setShowLoader,
+      categories,
+      setCategories,
+      products,
+      setProducts,
+    }}
     >
       {children}
     </DataStoreContext.Provider>

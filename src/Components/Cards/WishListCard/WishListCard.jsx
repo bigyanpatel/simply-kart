@@ -3,15 +3,16 @@ import "./WishListCard.css";
 import { FiTrash } from "react-icons/fi";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useWishList } from "../../../contexts/WishListContext";
+import { toast } from "react-toastify";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const WishListCard = ({ product }) => {
   const { _id, title, imgSrc, author, costPrice, sellPrice, discount } =
     product;
-  const { wishList, setWishList, userWishList, setUserWishList } =
-    useWishList();
+  const { setWishList, userWishList, setUserWishList } = useWishList();
   const { token } = useAuth();
-
-  console.log("api wish list", wishList);
+  const { toastProps } = useDataStore();
+  toast.configure();
 
   const removeFromWishList = async () => {
     try {
@@ -22,6 +23,7 @@ export const WishListCard = ({ product }) => {
       });
       setWishList([...res.data.wishlist]);
       setUserWishList(userWishList.filter((item) => item._id !== _id));
+      toast.error("Item removed from wishlist", toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +33,6 @@ export const WishListCard = ({ product }) => {
     <div className="card">
       <div className="card-image-container">
         <img className="image-responsive" src={imgSrc} alt="wishlist item" />
-        {}
         <span className="card-icon dismiss-icon fs-lg">
           <FiTrash onClick={removeFromWishList} />
         </span>

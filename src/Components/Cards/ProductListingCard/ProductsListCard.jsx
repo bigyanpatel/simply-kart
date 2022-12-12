@@ -1,7 +1,6 @@
 import React from "react";
-import { FiHeart, FiArrowRight } from "react-icons/fi";
+import { FiHeart } from "react-icons/fi";
 import { FaStar, FaHeart } from "react-icons/fa";
-import { IoMdCart } from "react-icons/io";
 import axios from "axios";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useWishList } from "../../../contexts/WishListContext";
@@ -9,6 +8,9 @@ import "./ProductsListCard.css";
 import { useNavigate } from "react-router";
 import { useCart } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const ProductsListCard = ({ product }) => {
   const { title, imgSrc, author, costPrice, sellPrice, discount, ratings } =
@@ -16,8 +18,10 @@ export const ProductsListCard = ({ product }) => {
   const { setWishList, userWishList, setUserWishList } = useWishList();
   const { token } = useAuth();
   const navigate = useNavigate();
+  const { toastProps } = useDataStore();
   const { cartState, cartDispatch } = useCart();
   const { cartItems } = cartState;
+  toast.configure();
 
   const temp = userWishList.find((item) => item._id === product._id);
   const addToWishList = async () => {
@@ -31,15 +35,16 @@ export const ProductsListCard = ({ product }) => {
           },
         });
         setWishList([...res.data.wishlist]);
-        if(!temp){
-          setUserWishList([
+        temp
+          ? setUserWishList([...userWishList])
+          : setUserWishList([
               ...userWishList,
               { ...product, isWishList: true },
-            ])
-        }
+            ]);
       } catch (error) {
         console.log(error);
       }
+      toast.success("Item added to wishlist", toastProps);
     }
   };
 
@@ -65,6 +70,7 @@ export const ProductsListCard = ({ product }) => {
             product,
           });
         }
+        toast.success(`${title} added to cart`, toastProps);
       } catch (error) {
         console.log(error);
       }
@@ -101,12 +107,13 @@ export const ProductsListCard = ({ product }) => {
         </p>
         {cartItems.find((item) => item._id === product._id) ? (
           <Link className="wd-100" to="/cart">
-            <button className="btn is-solid wd-100 is-cart">
-              Go To Cart
-            </button>
+            <button className="btn is-solid wd-100 is-cart">Go To Cart</button>
           </Link>
         ) : (
-          <button onClick={addToCartHandler} className="btn is-solid wd-100 is-cart">
+          <button
+            onClick={addToCartHandler}
+            className="btn is-solid wd-100 is-cart"
+          >
             Add To Cart
           </button>
         )}
