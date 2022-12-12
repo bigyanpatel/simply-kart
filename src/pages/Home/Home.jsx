@@ -11,25 +11,35 @@ export const Home = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data: categories, status } = await axios.get("/api/categories");
-        const { data: productsData, status: statusCode } = await axios.get(
-          "/api/products"
-        );
-        status === 200
-          ? setCategories([...categories.categories])
-          : setCategories([]);
-
-        statusCode === 200
-          ? setHomeProducts([...productsData.products])
-          : setHomeProducts([]);
-
-      } catch (error) {
-        setError("Server having some issues!!!");
-      }
-    })();
+    try {
+      getCategories();
+      getHomeProducts();
+    } catch (error) {
+      setError("Server having issues");
+    }
   }, []);
+
+  const getCategories = async () => {
+    try {
+      const { data: categoryData, status } = await axios.get("/api/categories");
+      status === 200
+        ? setCategories([...categoryData.categories])
+        : setCategories([]);
+    } catch (error) {
+      setError("Server having some issues!!!");
+    }
+  };
+
+  const getHomeProducts = async () => {
+    try {
+      const { data: productsData, status } = await axios.get("/api/products");
+      status === 200
+        ? setHomeProducts([...productsData.products])
+        : setHomeProducts([]);
+    } catch (error) {
+      setError("Server having some issues!!!");
+    }
+  };
 
   return (
     <div>
@@ -52,13 +62,13 @@ export const Home = () => {
       </div>
       {/* App intrduction ends */}
 
-      {categories.length !== 0 || homeProducts.length !== 0 ? (
-        <div className="grid-category">
+      {categories.length !== 0 && homeProducts.length !== 0 ? (
+        <div class="grid-category">
           <h2 className="section-heading center-text">Types</h2>
-          <div className="book-type">
+          <div class="book-type">
             {categories.map((item) => {
               return (
-                <div className="type type-fiction">
+                <div class="type type-fiction">
                   <img src={item.imgSrc} alt="no preview available" />
                   <p>{item.categoryName}</p>
                 </div>
@@ -68,8 +78,8 @@ export const Home = () => {
           {/* <!-- || Books category ends --> */}
 
           {/* <!-- || Books trending starts --> */}
-          <h2 className="section-heading center-text">India trending</h2>
-          <div className="book-trending">
+          <h2 class="section-heading center-text">India trending</h2>
+          <div class="book-trending">
             {homeProducts.slice(0, 4).map((item) => (
               <HomeCard product={item} />
             ))}
@@ -77,8 +87,8 @@ export const Home = () => {
           {/* <!-- || Books trending ends --> */}
 
           {/* <!-- || High selling books starts --> */}
-          <h2 className="section-heading center-text">High Selling Books</h2>
-          <div className="book-high-sell">
+          <h2 class="section-heading center-text">High Selling Books</h2>
+          <div class="book-high-sell">
             {homeProducts.slice(5, 9).map((item) => (
               <HomeCard product={item} />
             ))}
