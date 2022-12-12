@@ -6,6 +6,31 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Home = () => {
+  const [categories, setCategories] = useState([]);
+  const [homeProducts, setHomeProducts] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data: categories, status } = await axios.get("/api/categories");
+        const { data: productsData, status: statusCode } = await axios.get(
+          "/api/products"
+        );
+        status === 200
+          ? setCategories([...categories.categories])
+          : setCategories([]);
+
+        statusCode === 200
+          ? setHomeProducts([...productsData.products])
+          : setHomeProducts([]);
+
+      } catch (error) {
+        setError("Server having some issues!!!");
+      }
+    })();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -27,70 +52,42 @@ export const Home = () => {
       </div>
       {/* App intrduction ends */}
 
-      <div className="grid-category">
-        {/* <!-- || Books type starts--> */}
-        <h2 className="section-heading center-text">Types</h2>
-        <div className="book-type">
-          <div className="type type-fiction">
-            <img
-              src="https://n2.sdlcdn.com/imgs/e/h/m/Fiction-0ba2f.jpg"
-              alt="no preview available"
-            />
-            <p>Fiction</p>
+      {categories.length !== 0 || homeProducts.length !== 0 ? (
+        <div className="grid-category">
+          <h2 className="section-heading center-text">Types</h2>
+          <div className="book-type">
+            {categories.map((item) => {
+              return (
+                <div className="type type-fiction">
+                  <img src={item.imgSrc} alt="no preview available" />
+                  <p>{item.categoryName}</p>
+                </div>
+              );
+            })}
           </div>
-          <div className="type type-nonfiction">
-            <img
-              src="https://n2.sdlcdn.com/imgs/e/h/m/NonFiction-3fef2.jpg"
-              alt="no preview available"
-            />
-            <p>Non-Fiction</p>
-          </div>
-          <div className="type type-philosophy">
-            <img
-              src="https://n4.sdlcdn.com/imgs/e/h/m/philosphy-ed2c5.jpg"
-              alt="no preview available"
-            />
-            <p>Philosophy</p>
-          </div>
-          <div className="type type-family">
-            <img
-              src="https://n3.sdlcdn.com/imgs/e/h/m/family-fcca1.jpg"
-              alt="no preview available"
-            />
-            <p>Family & Relationship</p>
-          </div>
-          <div className="type type-selfhelp">
-            <img
-              src="https://n2.sdlcdn.com/imgs/e/h/m/SelfHelp-eeb2f.jpg"
-              alt="no preview available"
-            />
-            <p>Self-Help</p>
-          </div>
-        </div>
-        {/* <!-- || Books category ends --> */}
+          {/* <!-- || Books category ends --> */}
 
-        {/* <!-- || Books trending starts --> */}
-        <h2 className="section-heading center-text">India trending</h2>
-        <div className="book-trending">
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
-        </div>
-        {/* <!-- || Books trending ends --> */}
+          {/* <!-- || Books trending starts --> */}
+          <h2 className="section-heading center-text">India trending</h2>
+          <div className="book-trending">
+            {homeProducts.slice(0, 4).map((item) => (
+              <HomeCard product={item} />
+            ))}
+          </div>
+          {/* <!-- || Books trending ends --> */}
 
-        {/* <!-- || High selling books starts --> */}
-        <h2 className="section-heading center-text">High Selling Books</h2>
-        <div className="book-high-sell">
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
-          <HomeCard />
+          {/* <!-- || High selling books starts --> */}
+          <h2 className="section-heading center-text">High Selling Books</h2>
+          <div className="book-high-sell">
+            {homeProducts.slice(5, 9).map((item) => (
+              <HomeCard product={item} />
+            ))}
+          </div>
+          {/* <!-- || High selling books ends --> */}
         </div>
-        {/* <!-- || High selling books ends --> */}
-      </div>
+      ) : (
+        <h1 className="center-text">{error}</h1>
+      )}
       {/* App introduction ends */}
     </div>
   );
