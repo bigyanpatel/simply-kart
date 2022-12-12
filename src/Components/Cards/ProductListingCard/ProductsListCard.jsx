@@ -35,7 +35,7 @@ export const ProductsListCard = ({ product }) => {
           : setUserWishList([
               ...userWishList,
               { ...product, isWishList: true },
-            ])
+            ]);
       } catch (error) {
         console.log(error);
       }

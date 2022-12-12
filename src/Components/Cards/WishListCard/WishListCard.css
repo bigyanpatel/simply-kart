@@ -1,3 +1,7 @@
 .card {
     border: 1px solid var(--Secondary_Border_Color);
 }
+.dismiss-icon:hover {
+    transition: 0.3s ease-in;
+    background-color: var(--Color_Danger_200);
+}

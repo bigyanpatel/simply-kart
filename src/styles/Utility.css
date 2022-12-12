@@ -41,6 +41,9 @@
   justify-content: center;
   align-items: center;
 }
+.flex-dir-col {
+  flex-direction: column;
+}
 .dismiss-icon {
   color: var(--Color_Danger_500);
 }
