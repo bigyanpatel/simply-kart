@@ -1,10 +1,10 @@
 import { Navbar, WishListCard } from "../../barrelexport/Componentutil";
-import { checkLoginService } from "../../Services/AuthService";
+import { CheckLoginService } from "../../Services/AuthService";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
 
-  checkLoginService();
+  CheckLoginService();
   return (
     <div>
       <Navbar />

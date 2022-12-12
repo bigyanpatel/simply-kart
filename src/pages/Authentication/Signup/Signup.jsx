@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
 import { useForm } from "../../../Hooks/useForm";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
-import { useNavigate } from "react-router";
-import "./signup.css";
+import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 export const Signup = () => {
+  const navigate = useNavigate();
   const {
     passwordToggle,
     confirmPasswordToggle,
@@ -18,16 +19,16 @@ export const Signup = () => {
 
   const { formData, errors, formHandler } = useForm();
 
-  // const signupHandler = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await axios.post("/api/auth/signup", formData);
-  //     // localStorage.setItem("token", res.data.encodedToken);
-  //     navigate("/login");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const signupHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/api/auth/signup", formData);
+      // localStorage.setItem("token", res.data.encodedToken);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>

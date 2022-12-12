@@ -67,12 +67,12 @@ export const Login = () => {
             </div>
           </form>
           <span className="text-or">Or</span>
-          <p className="align-center">
+          <div className="align-center">
             New user?
             <Link to="/signup">
-              <a className="auth-link cursor">Create an account</a>
+              <p className="auth-link cursor">Create an account</p>
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </>

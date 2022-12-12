@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext";
 
-const checkLoginService = () => {
+const CheckLoginService = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
   console.log(token);
@@ -12,4 +12,4 @@ const checkLoginService = () => {
   });
 };
 
-export { checkLoginService };
+export { CheckLoginService };
