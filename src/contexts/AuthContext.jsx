@@ -8,6 +8,7 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
   const { formData } = useForm();
+  const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState(
     localStorageToken && localStorageToken.token
   );
@@ -26,6 +27,7 @@ const AuthContextProvider = ({ children }) => {
         JSON.stringify({ token: data.encodedToken })
       );
       setToken(data.encodedToken);
+      setCurrentUser(data.foundUser);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -35,11 +37,13 @@ const AuthContextProvider = ({ children }) => {
   const loginHandler = async () => {
     try {
       const { data } = await axios.post("/api/auth/login", signinData);
+      console.log(data);
       localStorage.setItem(
         "loginToken",
         JSON.stringify({ token: data.encodedToken })
       );
       setToken(data.encodedToken);
+      setCurrentUser(data.foundUser);
       setTimeout(() => {
         navigate("/");
       }, 1000);
@@ -52,6 +56,7 @@ const AuthContextProvider = ({ children }) => {
     setTimeout(() => {
       localStorage.removeItem("loginToken");
       setToken("");
+      setCurrentUser({});
       navigate("/");
     }, 1000);
   };
@@ -65,6 +70,7 @@ const AuthContextProvider = ({ children }) => {
         signupHandler,
         signinData,
         logoutHandler,
+        currentUser,
       }}
     >
       {children}
