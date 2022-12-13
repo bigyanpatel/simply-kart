@@ -16,9 +16,10 @@ import "./Navbar.css";
 
 export const Navbar = () => {
   const { token, logoutHandler } = useAuth();
-  const { userWishList } = useWishList();
+  const { wishListState } = useWishList();
+  const { wishListData } = wishListState;
   const { cartState } = useCart();
-  const { cartStatus } = cartState;
+  const { cartData } = cartState;
 
   return (
     <nav className="navigation">
@@ -86,9 +87,9 @@ export const Navbar = () => {
                 <small className="fs-md">Wishlist</small>
               </div>
             </Link>
-            {userWishList.length !== 0 && (
+            {wishListData.length !== 0 && (
               <span className="favourite-badge badge">
-                {userWishList.length}
+                {wishListData.length}
               </span>
             )}
           </li>
@@ -101,8 +102,8 @@ export const Navbar = () => {
                 <small className="fs-md">Cart</small>
               </div>
             </Link>
-            {cartStatus !== 0 && (
-              <span className="cart-badge badge">{cartState.cartStatus}</span>
+            {cartData.length !== 0 && (
+              <span className="cart-badge badge">{cartData.length}</span>
             )}
           </li>
         </ul>

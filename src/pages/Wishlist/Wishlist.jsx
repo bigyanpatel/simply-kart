@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar, ProductsListCard } from "../../barrelexport/Componentutil";
+import { useAuth } from "../../contexts/AuthContext";
 import { useWishList } from "../../contexts/WishListContext";
-import { WishListService } from "../../Services/WishListService";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
-  const { userWishList } = useWishList();
+  const { wishListState } = useWishList();
+  const { wishListData } = wishListState;
+  const navigate = useNavigate();
+  const { token } = useAuth();
 
-  WishListService();
+  !token && navigate("/login");
 
   return (
     <div>
       <Navbar />
-      {userWishList.length !== 0 ? (
+      {wishListData.length !== 0 ? (
         <div className="grid-container">
-          {userWishList.map((item, index) => (
-            <ProductsListCard key={index} product={item} />
+          {wishListData.map((item, index) => (
+            <ProductsListCard product={item} key={index} />
           ))}
         </div>
       ) : (

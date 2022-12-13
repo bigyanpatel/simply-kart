@@ -41,7 +41,6 @@ const AuthContextProvider = ({ children }) => {
   const loginHandler = async () => {
     try {
       const { data } = await axios.post("/api/auth/login", signinData);
-      console.log(data);
       localStorage.setItem(
         "loginToken",
         JSON.stringify({ token: data.encodedToken })
