@@ -1,6 +1,6 @@
 .navigation {
   box-shadow: var(--navbar_shadow);
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .secondary-list {
   padding: 0 20px;
@@ -8,6 +8,19 @@
 .logo-text {
   margin-left: 1rem;
   color: var(--Primary_Color);
+}
+.quick-link {
+  display: flex;
+  margin-left: 3rem;
+  font-size: 1.25rem;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav-item:hover {
+  opacity: 0.8;
 }
 .searchbox-icon {
   display: flex;
@@ -21,11 +34,11 @@
   color: var(--Primary_Color);
 }
 .cart-badge {
-  bottom: 1.1rem;
+  bottom: 2rem;
 }
 .favourite-badge {
-  bottom: 1.1rem;
-  left: 2.2rem;
+  bottom: 2rem;
+  left: 3.3rem;
 }
 .search-input {
   width: 100%;
