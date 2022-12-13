@@ -13,7 +13,6 @@ const WishListService = () => {
         navigate("/login");
         return;
       } else {
-        console.log("else part");
         try {
           const res=await axios.get("/api/user/wishlist", {
             headers: {
