@@ -18,8 +18,8 @@ export const Cart = () => {
         {cartItems.length !== 0 ? (
           <div className="cart-container">
             <div className="card-item">
-              {cartItems.map((item) => (
-                <CartCard cartItem={item} />
+              {cartItems.map((item, index) => (
+                <CartCard key={index} cartItem={item} />
               ))}
             </div>
             <div className="bill-item">
