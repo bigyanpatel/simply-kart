@@ -1,7 +1,8 @@
 :root {
-  --navbar_shadow: 2px 1px 5px var(--Primary_Color_100);
+  --navbar_shadow: 2px 4px 10px var(--Primary_Color_100);
   --card_shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px var(--Secondary_Color);
   --cirular_border: 50%;
+  --card_border: 2px solid var(--Primary_Color_100);
 }
 .cursor {
   cursor: pointer;

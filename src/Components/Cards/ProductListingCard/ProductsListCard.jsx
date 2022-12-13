@@ -98,9 +98,9 @@ export const ProductsListCard = ({ product }) => {
     }
   };
   return (
-    <div className="card">
+    <div className="card flex-center pd-vrtl-sm">
       <div className="card-image-container">
-        <img className="image-responsive" src={imgSrc} alt="book product" />
+      <img className="image-responsive" src={imgSrc} alt="book cover photo" />
         {temp && temp.isWishList ? (
           <span className="card-icon filled-favourites fs-lg">
             <FaHeart onClick={removeFromWishList} />
@@ -111,8 +111,8 @@ export const ProductsListCard = ({ product }) => {
           </span>
         )}
       </div>
-      <div className="card-body flex-center">
-        <p className="card-title center-text">{title}</p>
+      <div className="card-body">
+        <p className="card-title center-text mg-top">{title}</p>
         <small className="not">{author}</small>
         <span className="rating high-rating mg-vrtl-sm">
           <span>{ratings}</span>
@@ -125,14 +125,14 @@ export const ProductsListCard = ({ product }) => {
         </p>
         {cartItems.find((item) => item._id === product._id) ? (
           <Link className="wd-100" to="/cart">
-            <button className="btn is-solid wd-100 is-cart">Go To Cart</button>
+            <button className="btn is-solid wd-100 is-cart">GO TO CART</button>
           </Link>
         ) : (
           <button
             onClick={addToCartHandler}
             className="btn is-solid wd-100 is-cart"
           >
-            Add To Cart
+            ADD TO CART
           </button>
         )}
       </div>

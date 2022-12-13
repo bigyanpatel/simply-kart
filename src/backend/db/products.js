@@ -40,7 +40,7 @@ export const products = [
     description: `How to Win Friends & Influence People is a classic self-help book by Dale Carnegie. Summary of the Book Dale Carnegie discusses how to increase improve one’s popularity by winning them over through simple changes in one’s actions. He teaches readers how to impress people with his world-famous techniques which can help readers learn how to sell ideas and products by controlling their audience’s emotions effectively. `,
     author: "Carnegie Dale",
     costPrice: "90",
-    sellPrice: "150",
+    sellPrice: "550",
     discount: "40",
     ratings: "2.8",
     categoryName: "Family_and_relationship",

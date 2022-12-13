@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
@@ -132,43 +132,47 @@ export const CartCard = ({ cartItem }) => {
   };
 
   return (
-    <div className="card-hz">
-      <div className="horizontal-image-container">
-        <img className="hr-image" src={imgSrc} alt="No preview available" />
-      </div>
-      <div className="card-body-wrapper">
-        <div className="card-body">
-          <h3 className="card-title">{title}</h3>
-          <small>{author}</small>
-          <p className="card-sell-price">
-            <span>{sellPrice}₹</span>
-            <span className="card-cost-price">{costPrice}₹</span>
-            <span className="card-discount">{discount}%off</span>
-          </p>
-          <div className="quantity-count">
-            <button onClick={incrementQuantity} className="button-count-plus">
-              <span className="flex">
-                <FiPlus />
-              </span>
-            </button>
-            <p className="quantity-value">{quantity}</p>
+    <div className="card-hz flex-row">
+      <img className="hr-image" src={imgSrc} alt="book cover photo" />
+      <div className="cart-card-body">
+        <p>{title}</p>
+        <small className="card-sub-title">{author}</small>
+        <p className="card-sell-price">
+          <span>{sellPrice}₹</span>
+          <span className="card-cost-price">{costPrice}₹</span>
+          <span className="card-discount">{discount}%off</span>
+        </p>
+        <div className="quantity-count">
+          <button onClick={incrementQuantity} className="button-count-plus">
+            <span className="flex">
+              <FiPlus />
+            </span>
+          </button>
+          <p className="quantity-value">{quantity}</p>
+          {cartItem.quantity > 1 ? (
             <button onClick={decrementQuantity} className="button-count-minus">
               <span className="flex">
                 <FiMinus />
               </span>
             </button>
+          ) : (
+            <button
+              onClick={removeFromCartHandler}
+              className="button-count-minus"
+            >
+              <span className="flex">
+                <FiTrash2 />
+              </span>
+            </button>
+          )}
           </div>
           <div className="card-button-container mt">
             <button
-              onClick={removeFromCartHandler}
-              className="btn is-btn-danger is-outlined pd-sm"
+              onClick={addToWishList}
+              className="btn is-btn-secondary is-outlined pd-sm"
             >
-              Remove from cart
+              Move to wishlist
             </button>
-            <button onClick={addToWishList} className="is-secondary pd-sm">
-              Move to favourites
-            </button>
-          </div>
         </div>
       </div>
     </div>

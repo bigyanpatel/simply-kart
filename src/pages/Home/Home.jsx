@@ -49,7 +49,7 @@ export const Home = () => {
       {/* App introduction starts */}
       <div className="app-intro">
         <div className="intro-section">
-          <h1 className="intro-header">Welcome to the online B-Shop</h1>
+          <h1 className="intro-header">Welcome to your new Digital Bookstore</h1>
           <h2 className="intro-quote">
             A writer only begins a book. A reader finishes it
           </h2>

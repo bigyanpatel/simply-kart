@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import { useWishList } from "../../contexts/WishListContext";
+import { ImHome3 } from "react-icons/im";
+import { FaShoppingBag } from "react-icons/fa";
 import "./Navbar.css";
 
 export const Navbar = () => {
@@ -27,6 +29,20 @@ export const Navbar = () => {
         <Link to="/">
           <p className="logo-text fs-xlg">SimplyKart</p>
         </Link>
+        <div className="quick-link">
+          <Link to="/">
+            <div className="nav-item mg-hztl-md">
+              <ImHome3 />
+              <small className="fs-md">Home</small>
+            </div>
+          </Link>
+          <Link to="/products">
+            <div className="nav-item">
+              <FaShoppingBag />
+              <small className="fs-md">Shop Now</small>
+            </div>
+          </Link>
+        </div>
       </div>
       <div className="search-icon">
         <span className="searchbox-icon">
@@ -46,20 +62,29 @@ export const Navbar = () => {
       <div className="nav-right-section">
         {!token ? (
           <Link to="/login">
-            <FiLogIn className="user-icon fs-xlg" />
+            <div className="nav-item">
+              <FiLogIn className="user-icon fs-lg" />
+              <small className="fs-md">Login</small>
+            </div>
           </Link>
         ) : (
-          <FiLogOut
-            onClick={logoutHandler}
-            className="user-icon cursor fs-xlg"
-          />
+          <div className="nav-item">
+            <FiLogOut
+              onClick={logoutHandler}
+              className="user-icon cursor fs-lg"
+            />
+            <small className="fs-md">Logout</small>
+          </div>
         )}
         <ul className="secondary-list">
           <li className="favorites-list-item">
             <Link to={token ? "/wishlist" : "/login"}>
-              <span className="heart-icon fs-xlg flex-center">
-                <FiHeart className="cursor" />
-              </span>
+              <div className="nav-item">
+                <span className="heart-icon fs-lg flex-center">
+                  <FiHeart className="cursor" />
+                </span>
+                <small className="fs-md">Wishlist</small>
+              </div>
             </Link>
             {userWishList.length !== 0 && (
               <span className="favourite-badge badge">
@@ -69,9 +94,12 @@ export const Navbar = () => {
           </li>
           <li className="cart-list-item">
             <Link to={token ? "/cart" : "/login"}>
-              <span className="shop-icon fs-xlg flex-center">
-                <FiShoppingCart className="cursor" />
-              </span>
+              <div className="nav-item">
+                <span className="shop-icon fs-lg flex-center">
+                  <FiShoppingCart className="cursor" />
+                </span>
+                <small className="fs-md">Cart</small>
+              </div>
             </Link>
             {cartStatus !== 0 && (
               <span className="cart-badge badge">{cartState.cartStatus}</span>

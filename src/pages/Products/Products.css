@@ -16,6 +16,7 @@
   grid-area: main;
   display: grid;
   gap: 20px;
+  align-items: flex-start;
   background-color: var(--Color_White);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
