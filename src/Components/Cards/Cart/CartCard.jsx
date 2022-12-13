@@ -2,8 +2,10 @@ import axios from "axios";
 import React from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
+import { useWishList } from "../../../contexts/WishListContext";
 import { useDataStore } from "../../../contexts/DataStoreContext";
 import "./CartCard.css";
 
@@ -20,8 +22,33 @@ export const CartCard = ({ cartItem }) => {
   } = cartItem;
   const { token } = useAuth();
   const { cartState, cartDispatch } = useCart();
+  const { setWishList, userWishList, setUserWishList } = useWishList();
+  const navigate = useNavigate();
   const { toastProps } = useDataStore();
-  toast.configure();
+
+  const addToWishList = async () => {
+    if (!token) {
+      navigate("/login");
+    } else {
+      try {
+        const res = await axios.post("/api/user/wishlist", cartItem, {
+          headers: {
+            authorization: token,
+          },
+        });
+        setWishList([...res.data.wishlist]);
+        userWishList.find((item) => item._id === cartItem._id)
+          ? setUserWishList([...userWishList])
+          : setUserWishList([
+              ...userWishList,
+              { ...cartItem, isWishList: true },
+            ]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    removeFromCartHandler();
+  };
 
   const removeFromCartHandler = async () => {
     try {
@@ -138,7 +165,9 @@ export const CartCard = ({ cartItem }) => {
             >
               Remove from cart
             </button>
-            <button className="is-secondary pd-sm">Move to favourites</button>
+            <button onClick={addToWishList} className="is-secondary pd-sm">
+              Move to favourites
+            </button>
           </div>
         </div>
       </div>

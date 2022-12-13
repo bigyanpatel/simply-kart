@@ -13,8 +13,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const ProductsListCard = ({ product }) => {
-  const { title, imgSrc, author, costPrice, sellPrice, discount, ratings } =
-    product;
+  const {
+    _id,
+    title,
+    imgSrc,
+    author,
+    costPrice,
+    sellPrice,
+    discount,
+    ratings,
+  } = product;
   const { setWishList, userWishList, setUserWishList } = useWishList();
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -76,16 +84,27 @@ export const ProductsListCard = ({ product }) => {
       }
     }
   };
+
+  const removeFromWishList = async () => {
+    try {
+      const res = await axios.delete(`/api/user/wishlist/${_id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      setWishList([...res.data.wishlist]);
+      setUserWishList(userWishList.filter((item) => item._id !== _id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="card">
       <div className="card-image-container">
         <img className="image-responsive" src={imgSrc} alt="book product" />
-        <span className="card-icon favourites fs-lg">
-          <FiHeart onClick={addToWishList} />
-        </span>
         {temp && temp.isWishList ? (
           <span className="card-icon filled-favourites fs-lg">
-            <FaHeart onClick={addToWishList} />
+            <FaHeart onClick={removeFromWishList} />
           </span>
         ) : (
           <span className="card-icon favourites fs-lg">

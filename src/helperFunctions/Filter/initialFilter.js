@@ -7,8 +7,8 @@ const initialState = {
       Family_and_relationship: false,
       Self_help: false,
     },
-    rating: 0,
-    price: 0,
+    rating: 1,
+    price: 600,
   };
   
   export { initialState };

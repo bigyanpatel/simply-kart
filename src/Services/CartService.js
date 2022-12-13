@@ -15,14 +15,12 @@ const CartService = () => {
         navigate("/login");
         return;
       } else {
-        console.log("else part");
         try {
           const res = await axios.get("/api/user/cart", {
             headers: {
               authorization: token,
             },
           });
-          console.log(res);
           cartDispatch({ type: "SET_CART_FROM_API", payload: res.data.cart });
         } catch (error) {
           console.log(error);
