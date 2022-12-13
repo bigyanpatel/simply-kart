@@ -21,7 +21,6 @@ const CartService = () => {
               authorization: token,
             },
           });
-          console.log(res);
           cartDispatch({ type: "SET_CART_FROM_API", payload: res.data.cart });
         } catch (error) {
           console.log(error);
