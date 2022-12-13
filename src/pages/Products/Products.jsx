@@ -44,7 +44,7 @@ export const Products = () => {
   return (
     <div>
       <Navbar />
-      <main className="main-wrapper">
+      <main className="main-wrapper mg-top">
         <Filter />
         <div className="main">
           {resultData.map((item, index) => (

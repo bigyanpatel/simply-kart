@@ -1,9 +1,7 @@
 .card {
-  padding: 0 1rem;
+  border-radius: 5px; 
+  border: var(--card_border);
   background-color: var(--Color_White);
-}
-.card:hover {
-  box-shadow: var(--card_shadow);
 }
 .rating {
   align-self: center;
@@ -16,11 +14,12 @@
   background-color: var(--Color_Danger_200);
 }
 .image-responsive {
-  max-width: 70%;
-  height: 40vh;
+  width: auto;
+  height: 15rem;
   object-fit: contain;
 }
 .card-body {
+  width: 80%;
   padding: 0;
 }
 .card-title {
