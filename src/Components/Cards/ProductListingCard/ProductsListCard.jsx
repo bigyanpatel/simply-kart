@@ -11,8 +11,16 @@ import { useCart } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
 
 export const ProductsListCard = ({ product }) => {
-  const { title, imgSrc, author, costPrice, sellPrice, discount, ratings } =
-    product;
+  const {
+    _id,
+    title,
+    imgSrc,
+    author,
+    costPrice,
+    sellPrice,
+    discount,
+    ratings,
+  } = product;
   const { setWishList, userWishList, setUserWishList } = useWishList();
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -31,12 +39,12 @@ export const ProductsListCard = ({ product }) => {
           },
         });
         setWishList([...res.data.wishlist]);
-        if(!temp){
-          setUserWishList([
+        temp
+          ? setUserWishList([...userWishList])
+          : setUserWishList([
               ...userWishList,
               { ...product, isWishList: true },
-            ])
-        }
+            ]);
       } catch (error) {
         console.log(error);
       }
@@ -70,16 +78,27 @@ export const ProductsListCard = ({ product }) => {
       }
     }
   };
+
+  const removeFromWishList = async () => {
+    try {
+      const res = await axios.delete(`/api/user/wishlist/${_id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      setWishList([...res.data.wishlist]);
+      setUserWishList(userWishList.filter((item) => item._id !== _id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="card">
       <div className="card-image-container">
         <img className="image-responsive" src={imgSrc} alt="book product" />
-        <span className="card-icon favourites fs-lg">
-          <FiHeart onClick={addToWishList} />
-        </span>
         {temp && temp.isWishList ? (
           <span className="card-icon filled-favourites fs-lg">
-            <FaHeart onClick={addToWishList} />
+            <FaHeart onClick={removeFromWishList} />
           </span>
         ) : (
           <span className="card-icon favourites fs-lg">
@@ -101,12 +120,13 @@ export const ProductsListCard = ({ product }) => {
         </p>
         {cartItems.find((item) => item._id === product._id) ? (
           <Link className="wd-100" to="/cart">
-            <button className="btn is-solid wd-100 is-cart">
-              Go To Cart
-            </button>
+            <button className="btn is-solid wd-100 is-cart">Go To Cart</button>
           </Link>
         ) : (
-          <button onClick={addToCartHandler} className="btn is-solid wd-100 is-cart">
+          <button
+            onClick={addToCartHandler}
+            className="btn is-solid wd-100 is-cart"
+          >
             Add To Cart
           </button>
         )}
