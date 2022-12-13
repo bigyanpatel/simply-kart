@@ -1,25 +1,32 @@
 import React from "react";
 import "./Cart.css";
 import { CartCard, Navbar } from "../../barrelexport/Componentutil";
-import { CartService } from "../../Services/CartService";
 import { useCart } from "../../contexts/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { billCalculate } from "../../helperFunctions/CartHelpers/billCalculate";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const Cart = () => {
+  const navigate = useNavigate();
+  const { token } = useAuth();
   const { cartState } = useCart();
-  const { cartItems, bill, discount, cartArray } = cartState;
+  const { cartData } = cartState;
+  const result = billCalculate(cartData);
+  const { currentPrice, discountPrice } = result;
+  const finalPrice = currentPrice - discountPrice;
 
-  CartService();
+  !token && navigate("/login");
+
   return (
     <div>
       <Navbar />
       <h1 className="main-heading">My cart</h1>
       <main className="main-container">
-        {cartItems.length !== 0 ? (
+        {cartData.length !== 0 ? (
           <div className="cart-container">
             <div className="card-item">
-              {cartItems.map((item, index) => (
-                <CartCard key={index} cartItem={item} />
+              {cartData.map((item, index) => (
+                <CartCard cartItem={item} key={index} />
               ))}
             </div>
             <div className="bill-item">
@@ -29,12 +36,12 @@ export const Cart = () => {
                 </div>
                 <div className="bill-info">
                   <div className="row-detail">
-                    <p className="col-80">Price ({cartItems.length} items)</p>
-                    <p className="col-20">{bill}₹</p>
+                    <p className="col-80">Price ({cartData.length} items)</p>
+                    <p className="col-20">{currentPrice}₹</p>
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Discount</p>
-                    <p className="col-20">-{discount}₹</p>
+                    <p className="col-20">{discountPrice}₹</p>
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Delivery</p>
@@ -42,9 +49,7 @@ export const Cart = () => {
                   </div>
                   <div className="row-detail">
                     <p className="total-text ">Total Amount</p>
-                    <p className="total-value ">
-                      {bill !== 0 && bill - discount}₹
-                    </p>
+                    <p className="total-value ">{finalPrice}</p>
                   </div>
                 </div>
                 <div className="msg">

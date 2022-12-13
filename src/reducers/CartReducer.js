@@ -1,28 +1,20 @@
-import { addToCart } from "../helperFunctions/CartHelpers/addToCart";
-import { decrementQuantity } from "../helperFunctions/CartHelpers/decrementQuantity";
-import { removeFromCart } from "../helperFunctions/CartHelpers/removeFromCart";
-
-const cartInitialState = {
-  cartItems: [],
-  cartArray: [],
-  cartStatus: 0,
-  bill: 0,
-  discount: 0,
-};
-
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "SET_CART_FROM_API":
-      return { ...state, cartArray: [...action.payload] };
+    case "GET_INITIAL_WISHLIST":
+      return { cartData: action.payload };
+
     case "ADD_TO_CART":
-      return addToCart(state, action);
+      return { cartData: action.payload };
+
     case "REMOVE_FROM_CART":
-      return removeFromCart(state, action);
-    case "DECREMENT_QUANTITY":
-      return decrementQuantity(state, action);
+      return { cartData: action.payload };
+
+    case "UPDATE_QUANTITY":
+      return { cartData: action.payload };
+
     default:
       return state;
   }
 };
 
-export { cartReducer, cartInitialState };
+export { cartReducer };
