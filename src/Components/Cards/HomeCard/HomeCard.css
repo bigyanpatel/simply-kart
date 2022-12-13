@@ -1,7 +1,5 @@
-.card {
-    border: 1px solid var(--Secondary_Border_Color);
-}
-
 .book-image {
-    max-width: 80%;
-}
+    width: auto;
+    height: 17rem;
+    object-fit: contain;
+  }
