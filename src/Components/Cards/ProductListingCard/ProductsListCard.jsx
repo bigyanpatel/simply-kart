@@ -29,7 +29,6 @@ export const ProductsListCard = ({ product }) => {
   const { toastProps } = useDataStore();
   const { cartState, cartDispatch } = useCart();
   const { cartItems } = cartState;
-  toast.configure();
 
   const temp = userWishList.find((item) => item._id === product._id);
   const addToWishList = async () => {
