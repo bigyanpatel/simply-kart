@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
 import { Navbar, WishListCard } from "../../barrelexport/Componentutil";
-import { useAuth } from "../../contexts/AuthContext";
 import { useWishList } from "../../contexts/WishListContext";
 import { WishListService } from "../../Services/WishListService";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
-  const { currentUser } = useAuth();
-  const { wishList, userWishList } = useWishList();
+  const { userWishList } = useWishList();
 
   WishListService();
-  // console.log(wishList.length);
 
   return (
     <div>
