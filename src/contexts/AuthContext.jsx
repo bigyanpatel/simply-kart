@@ -16,8 +16,6 @@ const AuthContextProvider = ({ children }) => {
   );
   const { toastProps } = useDataStore();
 
-  toast.configure();
-
   const [signinData, setSigningData] = useState({
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
