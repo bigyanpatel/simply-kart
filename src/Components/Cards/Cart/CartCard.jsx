@@ -1,10 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
 import { useWishList } from "../../../contexts/WishListContext";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 import "./CartCard.css";
 
 export const CartCard = ({ cartItem }) => {
@@ -22,6 +24,7 @@ export const CartCard = ({ cartItem }) => {
   const { cartState, cartDispatch } = useCart();
   const { setWishList, userWishList, setUserWishList } = useWishList();
   const navigate = useNavigate();
+  const { toastProps } = useDataStore();
 
   const addToWishList = async () => {
     if (!token) {
@@ -61,6 +64,7 @@ export const CartCard = ({ cartItem }) => {
           cartItem,
         });
       }
+      toast.error(`${title} removed from cart`, toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +92,7 @@ export const CartCard = ({ cartItem }) => {
           product: cartItem,
         });
       }
+      toast.success(`One more ${title} book added `, toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -119,6 +124,7 @@ export const CartCard = ({ cartItem }) => {
             product: cartItem,
           });
         }
+        toast.warn(`Oh! one ${title} book deducted `, toastProps);
       } catch (error) {
         console.log(error);
       }

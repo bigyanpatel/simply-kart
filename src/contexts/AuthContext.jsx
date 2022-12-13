@@ -1,7 +1,9 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { useForm } from "../Hooks/useForm";
+import { useDataStore } from "./DataStoreContext";
 
 const AuthContext = createContext();
 
@@ -12,6 +14,10 @@ const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(
     localStorageToken && localStorageToken.token
   );
+  const { toastProps } = useDataStore();
+
+  toast.configure();
+
   const [signinData, setSigningData] = useState({
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
@@ -44,9 +50,8 @@ const AuthContextProvider = ({ children }) => {
       );
       setToken(data.encodedToken);
       setCurrentUser(data.foundUser);
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+      navigate("/");
+      toast.success("User logged in!!", toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -57,6 +62,7 @@ const AuthContextProvider = ({ children }) => {
       localStorage.removeItem("loginToken");
       setToken("");
       setCurrentUser({});
+      toast.warn("User logged out!!", toastProps);
       navigate("/");
     }, 1000);
   };
