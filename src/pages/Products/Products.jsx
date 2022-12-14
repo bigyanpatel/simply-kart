@@ -50,15 +50,15 @@ export const Products = () => {
       <Navbar />
       <main className="main-wrapper mg-top">
         <Filter />
-        <div className="main">
-          {resultData.length ? (
-            resultData.map((item, index) => (
+        {resultData.length ? (
+          <div className="main">
+            {resultData.map((item, index) => (
               <ProductsListCard key={index} product={item} />
-            ))
-          ) : (
-            <h1>No books available</h1>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p className="fs-lg">No books available</p>
+        )}
       </main>
     </div>
   );
