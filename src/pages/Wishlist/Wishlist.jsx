@@ -13,8 +13,7 @@ export const Wishlist = () => {
   !token && navigate("/login");
 
   return (
-    <div>
-      <Navbar />
+    <>
       {wishListData.length !== 0 ? (
         <div className="grid-container">
           {wishListData.map((item, index) => (
@@ -29,6 +28,6 @@ export const Wishlist = () => {
           </Link>
         </div>
       )}
-    </div>
+    </>
   );
 };

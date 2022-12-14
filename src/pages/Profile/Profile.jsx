@@ -18,31 +18,28 @@ export const Profile = () => {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="profile-container">
-        <h2 className="align-center">User Profile</h2>
-        <div className="profile-section">
-          <div className="profile-sidebar pd-md">
-            <ul className="sidebar-list">
-              {items.map(({ title, link }) => (
-                <NavLink
-                  key={title}
-                  style={({ isActive }) => setNavLink(isActive)}
-                  to={link}
-                >
-                  <li className="sidebar-list-item pd-vrtl-sm mg-vrtl-sm">
-                    {title}
-                  </li>
-                </NavLink>
-              ))}
-            </ul>
-          </div>
-          <div className="profile-info">
-            <Outlet />
-          </div>
+    <div className="profile-container">
+      <h2 className="align-center">User Profile</h2>
+      <div className="profile-section">
+        <div className="profile-sidebar pd-md">
+          <ul className="sidebar-list">
+            {items.map(({ title, link }) => (
+              <NavLink
+                key={title}
+                style={({ isActive }) => setNavLink(isActive)}
+                to={link}
+              >
+                <li className="sidebar-list-item pd-vrtl-sm mg-vrtl-sm">
+                  {title}
+                </li>
+              </NavLink>
+            ))}
+          </ul>
+        </div>
+        <div className="profile-info">
+          <Outlet />
         </div>
       </div>
-    </>
+    </div>
   );
 };
