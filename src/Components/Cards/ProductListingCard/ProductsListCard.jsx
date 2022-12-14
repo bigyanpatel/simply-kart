@@ -30,7 +30,7 @@ export const ProductsListCard = ({ product }) => {
   const { wishListData } = wishListState;
 
   return (
-    <div className="card">
+    <div className="card flex-center pd-vrtl-sm">
       <div className="card-image-container">
         <img className="image-responsive" src={imgSrc} alt="book product" />
         {wishListData.find((item) => item._id === product._id) ? (
@@ -61,14 +61,14 @@ export const ProductsListCard = ({ product }) => {
         </p>
         {cartData.find((item) => item._id === product._id) ? (
           <Link to="/cart">
-            <button className="btn is-solid is-cart wd-100">Go to cart</button>
+            <button className="btn is-solid is-cart wd-100">GO TO CART</button>
           </Link>
         ) : (
           <button
             onClick={() => addToCart(token, product, cartDispatch)}
             className="btn is-solid is-cart wd-100"
           >
-            Add to Cart
+            ADD TO CART
           </button>
         )}
       </div>
