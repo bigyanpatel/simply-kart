@@ -1,8 +1,9 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const getCartData = async (token) => {
   try {
-    const res = await axios.get("/api/user/cart", {
+    return await axios.get("/api/user/cart", {
       headers: {
         authorization: token,
       },
@@ -12,7 +13,7 @@ export const getCartData = async (token) => {
   }
 };
 
-export const addToCart = async (token, product, cartDispatch) => {
+export const addToCart = async (token, product, cartDispatch, toastProps) => {
   try {
     const res = await axios.post(
       "/api/user/cart",
@@ -23,14 +24,19 @@ export const addToCart = async (token, product, cartDispatch) => {
         },
       }
     );
-    console.log("add to cart response", res);
     cartDispatch({ type: "ADD_TO_CART", payload: res.data.cart });
+    toast.success(`${product.title} added to cart!`, toastProps);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const removeFromCart = async (token, productId, cartDispatch) => {
+export const removeFromCart = async (
+  token,
+  productId,
+  cartDispatch,
+  toastProps
+) => {
   try {
     const res = await axios.delete(`/api/user/cart/${productId}`, {
       headers: {
@@ -38,6 +44,7 @@ export const removeFromCart = async (token, productId, cartDispatch) => {
       },
     });
     cartDispatch({ type: "REMOVE_FROM_CART", payload: res.data.cart });
+    toast.info(`Item removed from cart!`, toastProps);
   } catch (error) {
     console.log(error);
   }
@@ -62,10 +69,9 @@ export const updateCartItemQuantity = async (
           authorization: token,
         },
       }
-      );
-      console.log("quantity", res);
-      cartDispatch({ type: "UPDATE_QUANTITY", payload: res.data.cart });
-    } catch (error) {
-      console.log(error);
-    }
+    );
+    cartDispatch({ type: "UPDATE_QUANTITY", payload: res.data.cart });
+  } catch (error) {
+    console.log(error);
+  }
 };

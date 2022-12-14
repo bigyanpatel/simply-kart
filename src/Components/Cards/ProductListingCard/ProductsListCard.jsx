@@ -11,6 +11,7 @@ import {
 import { addToCart } from "../../../Services/CartService";
 import { useCart } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const ProductsListCard = ({ product }) => {
   const {
@@ -26,6 +27,7 @@ export const ProductsListCard = ({ product }) => {
   const { token } = useAuth();
   const { wishListState, wishListDispatch } = useWishList();
   const { cartState, cartDispatch } = useCart();
+  const { toastProps } = useDataStore();
   const { cartData } = cartState;
   const { wishListData } = wishListState;
 
@@ -36,13 +38,17 @@ export const ProductsListCard = ({ product }) => {
         {wishListData.find((item) => item._id === product._id) ? (
           <span className="card-icon filled-favourites fs-lg">
             <FaHeart
-              onClick={() => removeFromWishList(token, _id, wishListDispatch)}
+              onClick={() =>
+                removeFromWishList(token, _id, wishListDispatch, toastProps)
+              }
             />
           </span>
         ) : (
           <span className="card-icon favourites fs-lg">
             <FiHeart
-              onClick={() => addToWishList(token, product, wishListDispatch)}
+              onClick={() =>
+                addToWishList(token, product, wishListDispatch, toastProps)
+              }
             />
           </span>
         )}
@@ -65,7 +71,7 @@ export const ProductsListCard = ({ product }) => {
           </Link>
         ) : (
           <button
-            onClick={() => addToCart(token, product, cartDispatch)}
+            onClick={() => addToCart(token, product, cartDispatch, toastProps)}
             className="btn is-solid is-cart wd-100"
           >
             ADD TO CART

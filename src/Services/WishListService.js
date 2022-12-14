@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export const getWishListData = async (token, wishListDispatch) => {
   try {
@@ -17,7 +17,12 @@ export const getWishListData = async (token, wishListDispatch) => {
   }
 };
 
-export const addToWishList = async (token, product, wishListDispatch) => {
+export const addToWishList = async (
+  token,
+  product,
+  wishListDispatch,
+  toastProps
+) => {
   try {
     const res = await axios.post(
       "/api/user/wishlist",
@@ -29,6 +34,7 @@ export const addToWishList = async (token, product, wishListDispatch) => {
       }
     );
     wishListDispatch({ type: "ADD_TO_WISHLIST", payload: res.data.wishlist });
+    toast.success(`${product.title} added to wishlist!`, toastProps);
   } catch (error) {
     console.log(error);
   }
@@ -37,7 +43,8 @@ export const addToWishList = async (token, product, wishListDispatch) => {
 export const removeFromWishList = async (
   token,
   productId,
-  wishListDispatch
+  wishListDispatch,
+  toastProps
 ) => {
     try {
       const res = await axios.delete(`/api/user/wishlist/${productId}`, {
@@ -47,6 +54,7 @@ export const removeFromWishList = async (
         type: "REMOVE_FROM_WISHLIST",
         payload: res.data.wishlist,
       });
+      toast.info("Item removed from wishlsit!", toastProps);
     } catch (error) {
       console.log(error);
     }

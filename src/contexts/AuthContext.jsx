@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useForm } from "../Hooks/useForm";
 import { useDataStore } from "./DataStoreContext";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext();
 
@@ -32,6 +33,7 @@ const AuthContextProvider = ({ children }) => {
       );
       setToken(data.encodedToken);
       setCurrentUser(data.foundUser);
+      toast.success(`Hi user, you are signed up`, toastProps);
       navigate("/");
     } catch (error) {
       console.log(error);

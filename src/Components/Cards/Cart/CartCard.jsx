@@ -1,11 +1,10 @@
 import React from "react";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
-import { useWishList } from "../../../contexts/WishListContext";
 import { useDataStore } from "../../../contexts/DataStoreContext";
+import { useWishList } from "../../../contexts/WishListContext";
 import {
   removeFromCart,
   updateCartItemQuantity,
@@ -18,7 +17,6 @@ export const CartCard = ({ cartItem }) => {
     cartItem;
   const { token } = useAuth();
   const { cartDispatch } = useCart();
-  const navigate = useNavigate();
   const { wishListState, wishListDispatch } = useWishList();
   const { wishListData } = wishListState;
   const { toastProps } = useDataStore();
@@ -59,7 +57,9 @@ export const CartCard = ({ cartItem }) => {
             </button>
           ) : (
             <button
-            onClick={() => removeFromCart(token, _id, cartDispatch)}
+              onClick={() =>
+                removeFromCart(token, _id, cartDispatch, toastProps)
+              }
               className="button-count-minus"
             >
               <span className="flex">
@@ -67,18 +67,18 @@ export const CartCard = ({ cartItem }) => {
               </span>
             </button>
           )}
-          </div>
-          <div className="card-button-container mt">
-            <button
-              onClick={() => {
-                wishListData.map((item) => item._id === cartItem._id)
-                  ? removeFromCart(token, _id, cartDispatch)
-                  : addToWishList(token, cartItem, wishListDispatch);
-              }}
-              className="btn is-btn-secondary is-outlined pd-sm"
-            >
-              Move to wishlist
-            </button>
+        </div>
+        <div className="card-button-container mt">
+          <button
+            onClick={() => {
+              wishListData.map((item) => item._id === cartItem._id)
+                ? removeFromCart(token, _id, cartDispatch, toastProps)
+                : addToWishList(token, cartItem, wishListDispatch, toastProps);
+            }}
+            className="btn is-btn-secondary is-outlined pd-sm"
+          >
+            Move to wishlist
+          </button>
         </div>
       </div>
     </div>
