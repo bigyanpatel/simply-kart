@@ -11,7 +11,12 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
   const { formData } = useForm();
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({
+    firstName: "Adarsh",
+    lastName: "Balika",
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+  });
   const [token, setToken] = useState(
     localStorageToken && localStorageToken.token
   );
