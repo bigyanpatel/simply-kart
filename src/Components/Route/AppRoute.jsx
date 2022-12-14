@@ -8,11 +8,19 @@ import {
   Wishlist,
   Cart,
   Home,
+  Profile,
 } from "../../barrelexport/Pageutil";
+import {
+  Settings,
+  ProfileCard,
+  Addresses,
+  Orders,
+} from "../../pages/Profile/profilePageExport";
 import { SingleProductPage } from "../../pages/SingleProductPage/SingleProductPage";
 
 export const AppRoute = () => {
   return (
+    <>
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -22,6 +30,13 @@ export const AppRoute = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="mockman" element={<MockmanEs />} />
         <Route path="products/:productId" element={<SingleProductPage />} />
+        <Route path="/profile/" element={<Profile />}>
+          <Route path="" element={<ProfileCard />} />
+          <Route path="addresses" element={<Addresses />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
+    </>
   );
 };

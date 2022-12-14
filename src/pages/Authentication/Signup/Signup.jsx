@@ -104,7 +104,7 @@ export const Signup = () => {
             </div>
             {errors.isMatch && <p className="error-msg">{errors.isMatch}</p>}
             <button
-              onClick={signupHandler}
+              onClick={() => signupHandler(formData)}
               disabled={
                 Object.entries(errors).length === 0 &&
                 Object.entries(formData).length === 5

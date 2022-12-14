@@ -1,0 +1,9 @@
+.profile-detail span:nth-child(1){
+    font-weight: 600;
+}
+.mg-l-16{
+    margin-left: 1rem;
+}
+.primary-clr{
+    color: var(--Primary_Color);
+}

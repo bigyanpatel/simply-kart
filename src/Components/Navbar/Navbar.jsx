@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FiHeart,
-  FiLogIn,
-  FiLogOut,
-  FiSearch,
-  FiShoppingCart,
-} from "react-icons/fi";
+import { FiHeart, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import {
   useAuth,
@@ -20,7 +14,7 @@ import "./Navbar.css";
 import { initialState } from "../../barrelexport/Filterutil";
 
 export const Navbar = () => {
-  const { token, logoutHandler } = useAuth();
+  const { token, currentUser } = useAuth();
   const {
     wishListState: { wishListData },
   } = useWishList();
@@ -79,18 +73,17 @@ export const Navbar = () => {
         {!token ? (
           <Link to="/login">
             <div className="nav-item">
-              <FiLogIn className="user-icon fs-lg" />
+              <FiUser className="user-icon fs-lg" />
               <small className="fs-md">Login</small>
             </div>
           </Link>
         ) : (
-          <div className="nav-item">
-            <FiLogOut
-              onClick={logoutHandler}
-              className="user-icon cursor fs-lg"
-            />
-            <small className="fs-md">Logout</small>
-          </div>
+          <Link to="/profile/">
+            <div className="nav-item">
+              <FiUser className="user-icon cursor fs-lg" />
+              <small className="fs-md">Hi {currentUser.firstName}</small>
+            </div>
+          </Link>
         )}
         <ul className="secondary-list">
           <li className="favorites-list-item">

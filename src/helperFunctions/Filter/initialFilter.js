@@ -4,7 +4,7 @@ const initialState = {
       Fiction: false,
       Non_fiction: false,
       Philosophy: false,
-      Family_and_relationship: false,
+      Family_relationship: false,
       Self_help: false,
     },
     rating: 1,
