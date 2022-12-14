@@ -5,9 +5,12 @@ import { Navbar, HomeCard } from "../../barrelexport/Componentutil";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDataStore } from "../../contexts/DataStoreContext";
+import { useFilter } from "../../contexts/FilterContext";
+import { initialState } from "../../barrelexport/Filterutil";
 
 export const Home = () => {
   const { categories, setCategories, products, setProducts } = useDataStore();
+  const { filterDispatch } = useFilter();
 
   const [error, setError] = useState("");
 
@@ -42,10 +45,10 @@ export const Home = () => {
     }
   };
 
+  const getCategoryName = (category) => category.replace("-", "_");
+
   return (
     <div>
-      <Navbar />
-
       {/* App introduction starts */}
       <div className="app-intro">
         <div className="intro-section">
@@ -67,12 +70,27 @@ export const Home = () => {
         <div className="grid-category">
           <h2 className="section-heading center-text">Types</h2>
           <div className="book-type">
-            {categories.map((item, index) => {
+            {categories.map(({ imgSrc, categoryName }, index) => {
               return (
-                <div key={index} className="type type-fiction">
-                  <img src={item.imgSrc} alt="no preview available" />
-                  <p>{item.categoryName}</p>
-                </div>
+                <Link to="/products">
+                  <div
+                    onClick={() => {
+                      filterDispatch({
+                        type: "CLEAR_ALL",
+                        payload: initialState,
+                      });
+                      filterDispatch({
+                        type: "SET_CATEGORY",
+                        payload: getCategoryName(categoryName),
+                      });
+                    }}
+                    key={index}
+                    className="type type-fiction"
+                  >
+                    <img src={imgSrc} alt="no preview available" />
+                    <p>{categoryName}</p>
+                  </div>
+                </Link>
               );
             })}
           </div>
@@ -82,7 +100,7 @@ export const Home = () => {
           <h2 className="section-heading center-text">India trending</h2>
           <div className="book-trending">
             {products.slice(0, 4).map((item, index) => (
-              <HomeCard key={index} product={item} />
+              <HomeCard product={item} key={index} />
             ))}
           </div>
           {/* <!-- || Books trending ends --> */}
@@ -91,7 +109,7 @@ export const Home = () => {
           <h2 className="section-heading center-text">High Selling Books</h2>
           <div className="book-high-sell">
             {products.slice(5, 9).map((item, index) => (
-              <HomeCard key={index} product={item} />
+              <HomeCard product={item} key={index} />
             ))}
           </div>
           {/* <!-- || High selling books ends --> */}

@@ -15,7 +15,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Non-Fiction",
+    categoryName: "Non-fiction",
     imgSrc: "https://n2.sdlcdn.com/imgs/e/h/m/NonFiction-3fef2.jpg",
     description:
       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
@@ -29,14 +29,14 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Family & Relationship",
+    categoryName: "Family-relationship",
     imgSrc: "https://n3.sdlcdn.com/imgs/e/h/m/family-fcca1.jpg",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
   },
   {
     _id: uuid(),
-    categoryName: "Self-Help",
+    categoryName: "Self-help",
     imgSrc: "https://n2.sdlcdn.com/imgs/e/h/m/SelfHelp-eeb2f.jpg",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
