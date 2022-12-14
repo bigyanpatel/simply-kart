@@ -1,4 +1,5 @@
 import "./App.css";
+import { Navbar } from "./barrelexport/Componentutil";
 import { Loader } from "./components/Loader/Loader";
 import { AppRoute } from "./components/Route/AppRoute";
 import { useDataStore } from "./contexts/DataStoreContext";
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
       {showLoader && <Loader />}
+      <Navbar />
       <div className="app">
         <ToastContainer />
         <AppRoute />

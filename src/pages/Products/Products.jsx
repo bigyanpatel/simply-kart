@@ -35,20 +35,17 @@ export const Products = () => {
   const resultData = getSortedData(priceFilteredData, sortBy);
 
   return (
-    <div>
-      <Navbar />
-      <main className="main-wrapper mg-top">
-        <Filter />
-        {resultData.length ? (
-          <div className="main">
-            {resultData.map((item, index) => (
-              <ProductsListCard key={index} product={item} />
-            ))}
-          </div>
-        ) : (
-          <p className="fs-lg">No books available</p>
-        )}
-      </main>
-    </div>
+    <main className="main-wrapper mg-top">
+      <Filter />
+      {resultData.length ? (
+        <div className="main">
+          {resultData.map((item, index) => (
+            <ProductsListCard key={index} product={item} />
+          ))}
+        </div>
+      ) : (
+        <p className="fs-lg">No books available</p>
+      )}
+    </main>
   );
 };
