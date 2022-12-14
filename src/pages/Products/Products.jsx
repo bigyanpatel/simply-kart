@@ -18,20 +18,9 @@ import { getFilterBySearch } from "../../helperFunctions/Filter/filterBySearch";
 import "./Products.css";
 
 export const Products = () => {
-  const { products, setProducts, searchText } = useDataStore();
+  const { products, searchText } = useDataStore();
   const { filterState } = useFilter();
   const { sortBy, categories, rating, price } = filterState;
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/products");
-        setProducts([...data.products]);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   const filteredBySearch = getFilterBySearch(products, searchText);
   const categoryFilteredData = getFilteredByCategory(

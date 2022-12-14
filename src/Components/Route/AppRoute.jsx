@@ -9,6 +9,7 @@ import {
   Cart,
   Home,
 } from "../../barrelexport/Pageutil";
+import { SingleProductPage } from "../../pages/SingleProductPage/SingleProductPage";
 
 export const AppRoute = () => {
   return (
@@ -20,6 +21,7 @@ export const AppRoute = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="mockman" element={<MockmanEs />} />
+        <Route path="products/:productId" element={<SingleProductPage />} />
       </Routes>
   );
 };

@@ -1,17 +1,19 @@
 import React from "react";
 import { FiHeart } from "react-icons/fi";
 import { FaStar, FaHeart } from "react-icons/fa";
-import { useAuth } from "../../../contexts/AuthContext";
-import { useWishList } from "../../../contexts/WishListContext";
 import "./ProductsListCard.css";
 import {
   addToWishList,
   removeFromWishList,
 } from "../../../Services/WishListService";
 import { addToCart } from "../../../Services/CartService";
-import { useCart } from "../../../contexts/CartContext";
+import {
+  useCart,
+  useDataStore,
+  useAuth,
+  useWishList,
+} from "../../../contexts/contextExport";
 import { Link, useNavigate } from "react-router-dom";
-import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const ProductsListCard = ({ product }) => {
   const {
@@ -23,6 +25,7 @@ export const ProductsListCard = ({ product }) => {
     sellPrice,
     discount,
     ratings,
+    id,
   } = product;
   const { token } = useAuth();
   const { wishListState, wishListDispatch } = useWishList();
@@ -35,9 +38,11 @@ export const ProductsListCard = ({ product }) => {
   return (
     <div className="card flex-center pd-vrtl-sm">
       <div className="card-image-container">
-        <img className="image-responsive" src={imgSrc} alt="book product" />
+        <Link to={`./${id}`}>
+          <img className="image-responsive" src={imgSrc} alt="book product" />
+        </Link>
         {wishListData.find((item) => item._id === product._id) ? (
-          <span className="card-icon filled-favourites fs-lg">
+          <span className="card-icon filled-favourites fs-md">
             <FaHeart
               onClick={() =>
                 removeFromWishList(token, _id, wishListDispatch, toastProps)
@@ -45,7 +50,7 @@ export const ProductsListCard = ({ product }) => {
             />
           </span>
         ) : (
-          <span className="card-icon favourites fs-lg">
+          <span className="card-icon favourites fs-md">
             <FiHeart
               onClick={() =>
                 addToWishList(
@@ -70,7 +75,7 @@ export const ProductsListCard = ({ product }) => {
         <p className="card-sell-price center-text pd-hztl-sm">
           <span>₹{sellPrice}</span>
           <span className="card-cost-price">₹{costPrice}</span>
-          <span className="card-discount">{discount}off</span>
+          <span className="card-discount">{discount}%off</span>
         </p>
         {cartData.find((item) => item._id === product._id) ? (
           <Link to="/cart">
