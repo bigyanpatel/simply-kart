@@ -1,5 +1,4 @@
 const billCalculate = (cartData) => {
-    console.log(cartData);
     const result = cartData.reduce(
       (acc, item) => ({
         currentPrice: acc.currentPrice + Number(item.sellPrice) * item.qty,

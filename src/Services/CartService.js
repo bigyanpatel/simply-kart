@@ -13,7 +13,17 @@ export const getCartData = async (token) => {
   }
 };
 
-export const addToCart = async (token, product, cartDispatch, toastProps) => {
+export const addToCart = async (
+  token,
+  product,
+  cartDispatch,
+  toastProps,
+  navigate
+) => {
+  if (!token) {
+    navigate("/login");
+    return;
+  }
   try {
     const res = await axios.post(
       "/api/user/cart",

@@ -21,22 +21,28 @@ export const addToWishList = async (
   token,
   product,
   wishListDispatch,
-  toastProps
+  toastProps,
+  navigate
 ) => {
-  try {
-    const res = await axios.post(
-      "/api/user/wishlist",
-      { product },
-      {
-        headers: {
-          authorization: token,
-        },
-      }
-    );
-    wishListDispatch({ type: "ADD_TO_WISHLIST", payload: res.data.wishlist });
-    toast.success(`${product.title} added to wishlist!`, toastProps);
-  } catch (error) {
-    console.log(error);
+  if (!token) {
+    navigate("/login");
+    return;
+  } else {
+    try {
+      const res = await axios.post(
+        "/api/user/wishlist",
+        { product },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      wishListDispatch({ type: "ADD_TO_WISHLIST", payload: res.data.wishlist });
+      toast.success(`${product.title} added to wishlist!`, toastProps);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

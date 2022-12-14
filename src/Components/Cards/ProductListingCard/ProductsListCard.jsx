@@ -10,7 +10,7 @@ import {
 } from "../../../Services/WishListService";
 import { addToCart } from "../../../Services/CartService";
 import { useCart } from "../../../contexts/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDataStore } from "../../../contexts/DataStoreContext";
 
 export const ProductsListCard = ({ product }) => {
@@ -30,6 +30,7 @@ export const ProductsListCard = ({ product }) => {
   const { toastProps } = useDataStore();
   const { cartData } = cartState;
   const { wishListData } = wishListState;
+  const navigate = useNavigate();
 
   return (
     <div className="card flex-center pd-vrtl-sm">
@@ -47,7 +48,13 @@ export const ProductsListCard = ({ product }) => {
           <span className="card-icon favourites fs-lg">
             <FiHeart
               onClick={() =>
-                addToWishList(token, product, wishListDispatch, toastProps)
+                addToWishList(
+                  token,
+                  product,
+                  wishListDispatch,
+                  toastProps,
+                  navigate
+                )
               }
             />
           </span>
@@ -71,7 +78,9 @@ export const ProductsListCard = ({ product }) => {
           </Link>
         ) : (
           <button
-            onClick={() => addToCart(token, product, cartDispatch, toastProps)}
+            onClick={() =>
+              addToCart(token, product, cartDispatch, toastProps, navigate)
+            }
             className="btn is-solid is-cart wd-100"
           >
             ADD TO CART
