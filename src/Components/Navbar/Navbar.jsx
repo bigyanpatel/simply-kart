@@ -6,20 +6,30 @@ import {
   FiSearch,
   FiShoppingCart,
 } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { useCart } from "../../contexts/CartContext";
-import { useWishList } from "../../contexts/WishListContext";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useAuth,
+  useCart,
+  useWishList,
+  useFilter,
+  useDataStore,
+} from "../../contexts/contextExport";
 import { ImHome3 } from "react-icons/im";
 import { FaShoppingBag } from "react-icons/fa";
 import "./Navbar.css";
+import { initialState } from "../../barrelexport/Filterutil";
 
 export const Navbar = () => {
   const { token, logoutHandler } = useAuth();
-  const { wishListState } = useWishList();
-  const { wishListData } = wishListState;
-  const { cartState } = useCart();
-  const { cartData } = cartState;
+  const {
+    wishListState: { wishListData },
+  } = useWishList();
+  const {
+    cartState: { cartData },
+  } = useCart();
+  const navigate = useNavigate();
+  const { filterDispatch } = useFilter();
+  const { setSearchText } = useDataStore();
 
   return (
     <nav className="navigation">
@@ -28,7 +38,7 @@ export const Navbar = () => {
       </span>
       <div className="nav-left-section">
         <Link to="/">
-          <p className="logo-text fs-xlg">SimplyKart</p>
+          <p className="logo-text fs-xlg">BookHub</p>
         </Link>
         <div className="quick-link">
           <Link to="/">
@@ -58,6 +68,11 @@ export const Navbar = () => {
           className="search-input"
           type="text"
           placeholder="Search book..."
+          onChange={(e) => {
+            navigate("/products");
+            filterDispatch({ type: "CLEAR_ALL", payload: initialState });
+            setSearchText(e.target.value);
+          }}
         />
       </div>
       <div className="nav-right-section">
