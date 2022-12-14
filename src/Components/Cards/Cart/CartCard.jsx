@@ -1,6 +1,5 @@
 import React from "react";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
-import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
 import { useDataStore } from "../../../contexts/DataStoreContext";
@@ -71,9 +70,8 @@ export const CartCard = ({ cartItem }) => {
         <div className="card-button-container mt">
           <button
             onClick={() => {
-              wishListData.map((item) => item._id === cartItem._id)
-                ? removeFromCart(token, _id, cartDispatch, toastProps)
-                : addToWishList(token, cartItem, wishListDispatch, toastProps);
+              removeFromCart(token, _id, cartDispatch, toastProps);
+              addToWishList(token, cartItem, wishListDispatch, toastProps);
             }}
             className="btn is-btn-secondary is-outlined pd-sm"
           >

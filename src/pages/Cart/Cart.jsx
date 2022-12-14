@@ -41,7 +41,7 @@ export const Cart = () => {
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Discount</p>
-                    <p className="col-20">{discountPrice}₹</p>
+                    <p className="col-20">-{discountPrice}₹</p>
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Delivery</p>
@@ -49,7 +49,7 @@ export const Cart = () => {
                   </div>
                   <div className="row-detail">
                     <p className="total-text ">Total Amount</p>
-                    <p className="total-value ">{finalPrice}</p>
+                    <p className="total-value ">{finalPrice}₹</p>
                   </div>
                 </div>
                 <div className="msg">
