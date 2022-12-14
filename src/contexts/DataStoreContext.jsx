@@ -6,6 +6,7 @@ import { createContext, useContext, useState } from "react";
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [showLoader, setShowLoader] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   const toastProps = {
     theme: "dark",
@@ -29,6 +30,8 @@ import { createContext, useContext, useState } from "react";
       setCategories,
       products,
       setProducts,
+      searchText,
+      setSearchText,
     }}
     >
       {children}

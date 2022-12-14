@@ -12,13 +12,13 @@ import {
   getRatingFilteredData,
 } from "../../barrelexport/Filterutil";
 
-import { useDataStore } from "../../contexts/DataStoreContext";
-import { useFilter } from "../../contexts/FilterContext";
+import { useDataStore, useFilter } from "../../contexts/contextExport";
+import { getFilterBySearch } from "../../helperFunctions/Filter/filterBySearch";
 
 import "./Products.css";
 
 export const Products = () => {
-  const { products, setProducts } = useDataStore();
+  const { products, setProducts, searchText } = useDataStore();
   const { filterState } = useFilter();
   const { sortBy, categories, rating, price } = filterState;
 
@@ -33,7 +33,11 @@ export const Products = () => {
     })();
   }, []);
 
-  const categoryFilteredData = getFilteredByCategory(products, categories);
+  const filteredBySearch = getFilterBySearch(products, searchText);
+  const categoryFilteredData = getFilteredByCategory(
+    filteredBySearch,
+    categories
+  );
   const ratingFilteredData = getRatingFilteredData(
     categoryFilteredData,
     rating
@@ -46,11 +50,15 @@ export const Products = () => {
       <Navbar />
       <main className="main-wrapper mg-top">
         <Filter />
-        <div className="main">
-          {resultData.map((item, index) => (
-            <ProductsListCard key={index} product={item} />
-          ))}
-        </div>
+        {resultData.length ? (
+          <div className="main">
+            {resultData.map((item, index) => (
+              <ProductsListCard key={index} product={item} />
+            ))}
+          </div>
+        ) : (
+          <p className="fs-lg">No books available</p>
+        )}
       </main>
     </div>
   );
