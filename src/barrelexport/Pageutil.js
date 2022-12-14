@@ -5,3 +5,4 @@ export { Cart } from "../pages/Cart/Cart";
 export { Home } from "../pages/Home/Home";
 export { Products } from "../pages/Products/Products";
 export { Wishlist } from "../pages/Wishlist/Wishlist";
+export { PageNotFound } from "../pages/PageNotFound/PageNotFound";

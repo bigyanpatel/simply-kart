@@ -9,6 +9,7 @@ import {
   Cart,
   Home,
   Profile,
+  PageNotFound,
 } from "../../barrelexport/Pageutil";
 import {
   Settings,
@@ -36,6 +37,7 @@ export const AppRoute = () => {
           <Route path="orders" element={<Orders />} />
           <Route path="settings" element={<Settings />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
