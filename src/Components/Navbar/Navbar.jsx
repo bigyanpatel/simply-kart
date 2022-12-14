@@ -38,7 +38,7 @@ export const Navbar = () => {
       </span>
       <div className="nav-left-section">
         <Link to="/">
-          <p className="logo-text fs-xlg">BookHub</p>
+          <p className="logo-text fs-xlg">SimplyKart</p>
         </Link>
         <div className="quick-link">
           <Link to="/">

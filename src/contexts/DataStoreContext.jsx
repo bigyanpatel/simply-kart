@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useState, useEffect } from "react";
 
-  const DataStoreContext = createContext();
+const DataStoreContext = createContext();
 
-  const DataStoreProvider = ({ children }) => {
+const DataStoreProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [showLoader, setShowLoader] = useState(true);
@@ -20,19 +21,30 @@ import { createContext, useContext, useState } from "react";
     setShowLoader(false);
   }, 1500);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/products");
+        setProducts([...data.products]);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
   return (
     <DataStoreContext.Provider
-    value={{
-      toastProps,
-      showLoader,
-      setShowLoader,
-      categories,
-      setCategories,
-      products,
-      setProducts,
-      searchText,
-      setSearchText,
-    }}
+      value={{
+        toastProps,
+        showLoader,
+        setShowLoader,
+        categories,
+        setCategories,
+        products,
+        setProducts,
+        searchText,
+        setSearchText,
+      }}
     >
       {children}
     </DataStoreContext.Provider>
