@@ -4,7 +4,8 @@ const billCalculate = (cartData) => {
         currentPrice: acc.currentPrice + Number(item.sellPrice) * item.qty,
         discountPrice:
           acc.discountPrice +
-          Math.floor((Number(item.discount) * Number(item.sellPrice)) / 100),
+          Math.floor((Number(item.discount) * Number(item.sellPrice)) / 100) *
+          item.qty,
       }),
       {
         currentPrice: 0,

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Cart.css";
-import { CartCard, Navbar } from "../../barrelexport/Componentutil";
+import { CartCard } from "../../barrelexport/Componentutil";
 import { useCart } from "../../contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { billCalculate } from "../../helperFunctions/CartHelpers/billCalculate";
@@ -9,13 +9,16 @@ import { useAuth } from "../../contexts/AuthContext";
 export const Cart = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
-  const { cartState } = useCart();
-  const { cartData } = cartState;
+  const {
+    cartState: { cartData },
+  } = useCart();
   const result = billCalculate(cartData);
   const { currentPrice, discountPrice } = result;
   const finalPrice = currentPrice - discountPrice;
 
-  !token && navigate("/login");
+  useEffect(() => {
+    !token && navigate("/login");
+  }, []);
 
   return (
     <>
@@ -40,7 +43,7 @@ export const Cart = () => {
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Discount</p>
-                    <p className="col-20">- {discountPrice}₹</p>
+                    <p className="col-20 clr-red">- {discountPrice}₹</p>
                   </div>
                   <div className="row-detail">
                     <p className="col-80">Delivery</p>
@@ -52,9 +55,11 @@ export const Cart = () => {
                   </div>
                 </div>
                 <div className="msg">
-                  <p className="text-green">Hurray!! You saved 1000₹ :)</p>
+                  <p className="text-green">
+                    Hurray!! You saved {discountPrice}₹ :)
+                  </p>
                 </div>
-                <button className="btn is-solid">Place Order</button>
+                <button className="btn is-solid">PLACE ORDER</button>
               </div>
             </div>
           </div>
