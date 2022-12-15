@@ -11,6 +11,7 @@ import {
   Profile,
   PageNotFound,
 } from "../../barrelexport/Pageutil";
+import { useAuth } from "../../contexts/AuthContext";
 import {
   Settings,
   ProfileCard,

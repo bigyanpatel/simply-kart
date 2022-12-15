@@ -2,7 +2,6 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { useForm } from "../Hooks/useForm";
 import { useDataStore } from "./DataStoreContext";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,13 +10,14 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
   const [currentUser, setCurrentUser] = useState(
-    localStorageToken && localStorageToken.user
+    {firstName: "Bigyan",
+      lastName: "Patel"
+    }
   );
   const [token, setToken] = useState(
     localStorageToken && localStorageToken.token
   );
   const { toastProps } = useDataStore();
-
   const [signinData, setSigningData] = useState({
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",

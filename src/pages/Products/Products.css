@@ -1,24 +1,19 @@
 .main-wrapper {
-  height: 90vh;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "sidebar main main main main";
+  display: flex;
+  margin-top: 2rem;
 }
-.sidebar,
+.filter-area {
+  position: relative;
+}
+
 .main {
-  padding: 1rem;
-}
-.sidebar {
-  grid-area: sidebar;
-  background-color: var(--Color_White);
-}
-.main {
-  grid-area: main;
   display: grid;
-  gap: 20px;
-  align-items: flex-start;
+  width: 80%;
+  margin-left: 2rem;
+  gap: 2rem 1rem;
+  justify-items: center;
   background-color: var(--Color_White);
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 /* Navbar section */
@@ -39,17 +34,14 @@
   color: var(--Primary_Hover_Color);
 }
 
-@media screen and (max-width: 530px) {
-  .sidebar {
-    display: none;
-  }
-  .main-wrapper {
-    grid-template-columns: auto;
-    grid-template-areas: "main";
-  }
-  .main {
-    grid-template-columns: auto;
-    justify-content: center;
+@media screen and (max-width: 872px) {
+  .filter-container {
+    position: fixed;
+    bottom: 0;
+    border: 1px solid blue;
+    width: 100%;
+    z-index: 2;
+    background-color: var(--Secondary_Color);
   }
   .search-icon {
     color: var(--Primary_Color);
@@ -61,10 +53,27 @@
   .login-link {
     display: none;
   }
-  .hamburger-icon {
-    display: block;
+}
+
+@media screen and (max-width: 1296px) {
+  .main {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  .search-bar {
-    display: none;
+}
+@media screen and (max-width: 1038px) {
+  .main {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+  .card button {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .main {
+    grid-template-columns: 1fr;
   }
 }

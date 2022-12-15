@@ -1,10 +1,5 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import {
-  Navbar,
-  Filter,
-  ProductsListCard,
-} from "../../barrelexport/Componentutil";
+import React, { useState } from "react";
+import { Filter, ProductsListCard } from "../../barrelexport/Componentutil";
 import {
   getFilterByPrice,
   getFilteredByCategory,
@@ -36,7 +31,9 @@ export const Products = () => {
 
   return (
     <main className="main-wrapper mg-top">
-      <Filter />
+      <div className="filter-container">
+        <Filter />
+      </div>
       {resultData.length ? (
         <div className="main">
           {resultData.map((item, index) => (

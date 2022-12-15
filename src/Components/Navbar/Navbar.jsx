@@ -1,5 +1,11 @@
-import React from "react";
-import { FiHeart, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
+import React, { useState } from "react";
+import {
+  FiHeart,
+  FiMenu,
+  FiSearch,
+  FiShoppingCart,
+  FiUser,
+} from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import {
   useAuth,
@@ -12,8 +18,10 @@ import { ImHome3 } from "react-icons/im";
 import { FaShoppingBag } from "react-icons/fa";
 import "./Navbar.css";
 import { initialState } from "../../barrelexport/Filterutil";
+import { NavDrawer } from "../NavDrawer/NavDrawer";
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { token, currentUser } = useAuth();
   const {
     wishListState: { wishListData },
@@ -27,10 +35,13 @@ export const Navbar = () => {
 
   return (
     <nav className="navigation">
-      <span className="hamburger-icon">
-        <i className="fas fa-bars"></i>
-      </span>
+      {isOpen && <NavDrawer setIsOpen={setIsOpen} />}
       <div className="nav-left-section">
+        <button onClick={() => setIsOpen(true)} className="bg-transparent">
+          <span className="hamburger-icon">
+            <FiMenu />
+          </span>
+        </button>
         <Link to="/">
           <p className="logo-text fs-xlg">SimplyKart</p>
         </Link>
@@ -48,11 +59,6 @@ export const Navbar = () => {
             </div>
           </Link>
         </div>
-      </div>
-      <div className="search-icon">
-        <span className="searchbox-icon">
-          <FiSearch />
-        </span>
       </div>
       <div className="search-bar">
         <span className="searchbox-icon">
@@ -72,14 +78,14 @@ export const Navbar = () => {
       <div className="nav-right-section">
         {!token ? (
           <Link to="/login">
-            <div className="nav-item">
+            <div className="nav-item nav-login-item">
               <FiUser className="user-icon fs-lg" />
               <small className="fs-md">Login</small>
             </div>
           </Link>
         ) : (
           <Link to="/profile/">
-            <div className="nav-item">
+            <div className="nav-item nav-login-item">
               <FiUser className="user-icon cursor fs-lg" />
               <small className="fs-md">Hi {currentUser.firstName}</small>
             </div>

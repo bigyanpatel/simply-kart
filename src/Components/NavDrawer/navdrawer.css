@@ -1,0 +1,38 @@
+.nav-modal{
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--Secondary_Hover_Color);
+    color: var(--Color_White);
+    position: fixed;
+    padding: 3rem 0;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 12rem;
+    height: 100vh;
+  }
+  .close-btn{
+    color: var(--Color_White);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .modal-item-container{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .nav-modal-item{
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  .nav-modal-item p{
+    font-size: 1.1rem;
+    margin-left: 5px;
+  }
+  .clr-white{
+      color: var(--Color_White);
+  }
