@@ -65,9 +65,11 @@
     display: flex;
   }
   .quick-link,
-  .nav-login-item {
+  .nav-login-item,
+  .profile-sidebar {
     display: none;
   }
+  
   .search-bar {
     box-sizing: border-box;
     position: absolute;

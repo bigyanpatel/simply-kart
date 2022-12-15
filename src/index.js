@@ -9,6 +9,7 @@ import { FilterProvider } from "./contexts/FilterContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { WishListProvider } from "./contexts/WishListContext";
 import { CartProvider } from "./contexts/CartContext";
+import { AddressProvider } from "./contexts/AddressContext";
 
 // Call make Server
 makeServer();
@@ -20,14 +21,16 @@ root.render(
   <React.StrictMode>
     <Router>
     <DataStoreProvider>
-        <AuthContextProvider>
-          <CartProvider>
-            <WishListProvider>
-              <FilterProvider>
-                <App />
+      <AuthContextProvider>
+        <AddressProvider>
+            <CartProvider>
+              <WishListProvider>
+                <FilterProvider>
+                  <App />
                 </FilterProvider>
-            </WishListProvider>
-          </CartProvider>
+              </WishListProvider>
+            </CartProvider>
+          </AddressProvider>
         </AuthContextProvider>
       </DataStoreProvider>
     </Router>
