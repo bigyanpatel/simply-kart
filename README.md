@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# SimplyKart.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SimplyKart is an online E-commerce app for **books**
 
-## Available Scripts
+*** 
 
-In the project directory, you can run:
+## Table of contents
 
-### `npm start`
+* [Why SimplyKart ?](#why)
+* [What are the features ?](#features)
+* [What about tech stack ?](#tech-stack)
+* [Want to see live demo ?](#live-demo)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  * [Images](#images)
+  * [Live Demo](#link)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* [Can you predict future features ?](#future-features)
+* [Author](#author)
 
-### `npm test`
+  * [Introduction](#introduction)
+  * [Social Media](#social-media)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+***
 
-### `npm run build`
+<a name="why"/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Why SimplyKart?
+* Purpose of SimplyKart is to provide plateform for book readers who want to buy books of different categories e.g fiction, non-fiction, relationship etc..
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a name="features"/>
 
-### `npm run eject`
+### What are the features ?
+* Authentication
+  * Signup
+  * Login
+  * Logout
+* Filter by
+  * Category
+  * Price
+  * Rating
+* Add/remove to/from cart 
+* Add/remove to/from wishlist
+* Search the product
+* Single product page
+* User profile page
+***
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<a name="tech-stack"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What about tech stack?
+* **Front-End**:
+  * HTML5
+  * CSS3
+  * React Js
+* **Back-End**:
+  * Mockbee
+  * Mockman
+* **Hosting**:
+  * Github
+  * Netlify
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+***
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<a name="live-demo"/>
 
-## Learn More
+### Want to see live demo?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a name="images"/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Images
+![image](https://user-images.githubusercontent.com/75557011/162362322-b23ce0bf-2fb4-4e62-9d4a-d5a9559c8484.png)
+![image](https://user-images.githubusercontent.com/75557011/162362446-234d3491-15f2-491c-b88b-112fc2a9e54f.png)
+![image](https://user-images.githubusercontent.com/75557011/162362551-c40f9365-600c-4b3f-95d7-346f141266fd.png)
 
-### Code Splitting
+***
+<a name="link"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Live Demo:
+* [SimplyKart](https://simplykart.netlify.app/)
 
-### Analyzing the Bundle Size
+***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<a name="future-features"/>
 
-### Making a Progressive Web App
+### Can you predict the future features?
+* Checkout
+* Place order
+* Address management
+* Order summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+***
 
-### Advanced Configuration
+<a name="author"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Author
 
-### Deployment
+<a name="introduction"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Introduction
+* Hey developers, I'm Bigyan, a passionate frontend developer. Check out my [Portfolio](https://bigyanpatel2.netlify.app/)
 
-### `npm run build` fails to minify
+<a name="social-media"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Social Media
+* [Twitter](https://twitter.com/meet_bigyan20)
+* [LinkedIn](https://www.linkedin.com/in/bigyanpatel/)
