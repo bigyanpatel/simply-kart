@@ -55,7 +55,7 @@ export const Cart = () => {
                   APPLY COUPON
                 </button>
               </div>
-              <div className="bill-heading">
+              <div className="bill-heading pd-vrtl-sm">
                 <p className="fs-lg">Price Details</p>
               </div>
               <div className="bill-info">
@@ -103,7 +103,9 @@ export const Cart = () => {
                   {discountPrice + (checkCoupon ? coupon.amount : 0)}₹ :)
                 </p>
               </div>
-              <button className="btn is-solid w-100">PLACE ORDER</button>
+              <Link to="/checkout">
+                <button className="btn is-solid w-100">CHECKOUT</button>
+              </Link>
             </div>
           </div>
         ) : (

@@ -13,6 +13,8 @@ import {
   
   const initialState = {
     addresses: [],
+    mobile: 9481382237,
+    currentAddressId: "",
   };
   
   const defaultAddress = {
@@ -27,7 +29,7 @@ import {
   
   const dummyAddress = {
     name: "albella karigar",
-    street: "d-a1, NeoRoad",
+    street: "d-a1, NeoRoad, Beta apartments",
     city: "banglore",
     state: "karnatak",
     country: "india",
