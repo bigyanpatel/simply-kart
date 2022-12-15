@@ -34,7 +34,7 @@ export const Filter = () => {
         <div className="filter-heading pd-sm">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="bg-transparent clr-blackbtn-no-event fs-btw-ml"
+            className="bg-transparent clr-black btn-no-event fs-btw-ml"
           >
             {isOpen ? "APPLY" : "FILTERS"}
           </button>

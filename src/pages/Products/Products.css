@@ -11,6 +11,7 @@
   width: 80%;
   margin-left: 2rem;
   gap: 2rem 1rem;
+  align-items: flex-start;
   justify-items: center;
   background-color: var(--Color_White);
   grid-template-columns: 1fr 1fr 1fr 1fr;

@@ -67,12 +67,14 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .book-category label:hover,
 .price-category label:hover {
   color: var(--Color_Black);
 }
+
 @media screen and (max-width: 872px) {
   .filter-section {
     padding: 0;

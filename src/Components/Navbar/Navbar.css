@@ -6,7 +6,7 @@
 .secondary-list {
   padding: 0 20px;
 }
-.bg-transparent{
+.bg-transparent {
   background: transparent;
   padding: 0;
   margin: 0;
@@ -14,6 +14,7 @@
 .logo-text {
   margin-left: 1rem;
   color: var(--Primary_Color);
+  font-family: var(--Logo_Font);
 }
 .quick-link {
   display: flex;
@@ -59,14 +60,15 @@
   text-transform: uppercase;
 }
 
-@media screen and (max-width:975px){
-  .hamburger-icon{
+@media screen and (max-width: 975px) {
+  .hamburger-icon {
     display: flex;
   }
-  .quick-link, .nav-login-item{
+  .quick-link,
+  .nav-login-item {
     display: none;
   }
-  .search-bar{
+  .search-bar {
     box-sizing: border-box;
     position: absolute;
     background-color: var(--Color_White);
@@ -74,5 +76,5 @@
     max-width: 100%;
     left: 0;
     display: flex;
-  }  
+  }
 }
