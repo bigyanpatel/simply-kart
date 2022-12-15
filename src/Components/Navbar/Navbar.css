@@ -72,6 +72,7 @@
     box-sizing: border-box;
     position: absolute;
     background-color: var(--Color_White);
+    border-bottom: 1px solid var(--Primary_Color);
     top: 4rem;
     max-width: 100%;
     left: 0;

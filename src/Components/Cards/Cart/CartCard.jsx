@@ -27,7 +27,7 @@ export const CartCard = ({ cartItem }) => {
     <div className="card-hz flex-row">
       <img className="hr-image" src={imgSrc} alt="book cover photo" />
       <div className="cart-card-body">
-        <p>{title}</p>
+        <p className="fs-btw-ml">{title}</p>
         <small className="card-sub-title">{author}</small>
         <p className="card-sell-price">
           <span>{sellPrice}₹</span>

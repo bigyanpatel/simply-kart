@@ -25,7 +25,7 @@ export const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h2 className="align-center">User Profile</h2>
+      <p className="align-center fs-lg mg-xlg">User Profile</p>
       <div className="profile-section">
         <div className="profile-sidebar pd-md">
           <ul className="sidebar-list">

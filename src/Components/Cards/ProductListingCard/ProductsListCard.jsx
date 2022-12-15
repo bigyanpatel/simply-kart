@@ -38,7 +38,7 @@ export const ProductsListCard = ({ product }) => {
   return (
     <div className="card flex-center pd-sm">
       <div className="card-image-container">
-        <Link to={`./${id}`}>
+      <Link to={`/products/${id}`}>
           <img className="image-responsive" src={imgSrc} alt="book product" />
         </Link>
         {wishListData.find((item) => item._id === product._id) ? (

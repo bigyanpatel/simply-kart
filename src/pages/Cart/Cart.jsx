@@ -22,8 +22,12 @@ export const Cart = () => {
 
   return (
     <>
-      <h1 className="main-heading">My cart</h1>
       <main className="main-container">
+      {cartData.length !== 0 && (
+          <p className="main-heading fs-lg mg-md">
+            My cart has products ({cartData.length})
+          </p>
+        )}
         {cartData.length !== 0 ? (
           <div className="cart-container">
             <div className="card-item">
@@ -65,9 +69,9 @@ export const Cart = () => {
           </div>
         ) : (
           <div className="flex-center flex-dir-col">
-            <h1>Empty Cart</h1>
+            <p className="fs-lg mg-xlg">Empty Cart</p>
             <Link to="/products">
-              <button className="btn is-solid fs-lg">Let's shopping</button>
+            <button className="btn is-solid fs-btw-ml">Let's Shopping</button>
             </Link>
           </div>
         )}
