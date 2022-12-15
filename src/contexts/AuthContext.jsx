@@ -6,7 +6,6 @@ import { useDataStore } from "./DataStoreContext";
 import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext();
-toast.configure();
 
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));

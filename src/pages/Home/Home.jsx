@@ -72,8 +72,8 @@ export const Home = () => {
           <div className="book-type">
             {categories.map(({ imgSrc, categoryName }, index) => {
               return (
-                <Link to="/products">
-                  <div
+                <Link key={index} to="/products">
+                <div
                     onClick={() => {
                       filterDispatch({
                         type: "CLEAR_ALL",
@@ -84,7 +84,6 @@ export const Home = () => {
                         payload: getCategoryName(categoryName),
                       });
                     }}
-                    key={index}
                     className="type type-fiction"
                   >
                     <img src={imgSrc} alt="no preview available" />

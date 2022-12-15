@@ -1,16 +1,19 @@
+import react, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, ProductsListCard } from "../../barrelexport/Componentutil";
-import { useAuth } from "../../contexts/AuthContext";
-import { useWishList } from "../../contexts/WishListContext";
+import { ProductsListCard } from "../../barrelexport/Componentutil";
+import { useAuth, useWishList } from "../../contexts/contextExport";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
-  const { wishListState } = useWishList();
-  const { wishListData } = wishListState;
+  const {
+    wishListState: { wishListData },
+  } = useWishList();
   const navigate = useNavigate();
   const { token } = useAuth();
 
-  !token && navigate("/login");
+  useEffect(() => {
+    !token && navigate("/login");
+  });
 
   return (
     <>

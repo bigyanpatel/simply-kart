@@ -15,7 +15,7 @@ import { addToWishList } from "../../Services/WishListService";
 
 export const SingleProductPage = () => {
   const { productId } = useParams();
-  const { products, toastProps, setShowLoader } = useDataStore();
+  const { products, toastProps } = useDataStore();
   const {
     wishListState: { wishListData },
     wishListDispatch,
@@ -31,15 +31,6 @@ export const SingleProductPage = () => {
   const replace = (catName) => {
     return catName.replaceAll("_", " ");
   };
-  useEffect(() => {
-    if (!products) {
-      setShowLoader(false);
-      return;
-    } else {
-      setShowLoader(true);
-      return;
-    }
-  }, []);
 
   return (
     <div className="main-container flex-center">
