@@ -6,17 +6,12 @@ import { useDataStore } from "./DataStoreContext";
 import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext();
+toast.configure();
 
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
-  const [currentUser, setCurrentUser] = useState(
-    {firstName: "Bigyan",
-      lastName: "Patel"
-    }
-  );
-  const [token, setToken] = useState(
-    localStorageToken && localStorageToken.token
-  );
+  const token = localStorageToken?.token || "";
+  const currentUser = localStorageToken?.user || "";
   const { toastProps } = useDataStore();
   const [signinData, setSigningData] = useState({
     email: "adarshbalika@gmail.com",
@@ -32,10 +27,8 @@ const AuthContextProvider = ({ children }) => {
         "loginToken",
         JSON.stringify({ token: data.encodedToken, user: data.createdUser })
       );
-      setToken(data.encodedToken);
-      setCurrentUser(data.createdUser);
       toast.success(`Hi user, you are signed up`, toastProps);
-      navigate("/");
+      navigate("/profile/");
     } catch (error) {
       console.log(error);
     }
@@ -48,9 +41,7 @@ const AuthContextProvider = ({ children }) => {
         "loginToken",
         JSON.stringify({ token: data.encodedToken, user: data.foundUser })
       );
-      setToken(data.encodedToken);
-      setCurrentUser(data.foundUser);
-      navigate("/");
+      navigate("/profile/");
       toast.success("User logged in!!", toastProps);
     } catch (error) {
       console.log(error);
@@ -60,8 +51,6 @@ const AuthContextProvider = ({ children }) => {
   const logoutHandler = () => {
     setTimeout(() => {
       localStorage.removeItem("loginToken");
-      setToken("");
-      setCurrentUser({});
       toast.warn("User logged out!!", toastProps);
       navigate("/");
     }, 1000);
@@ -71,13 +60,11 @@ const AuthContextProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         token,
-        setToken,
         currentUser,
         loginHandler,
         signupHandler,
         signinData,
         logoutHandler,
-        currentUser,
       }}
     >
       {children}
