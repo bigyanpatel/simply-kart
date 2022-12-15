@@ -1,19 +1,25 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { Navbar } from "../../barrelexport/Componentutil";
+import React, { useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import { setNavLink } from "../../helperFunctions/setNavLink";
 import "./profile.css";
 
 export const Profile = () => {
+  const { token } = useAuth();
   const items = [
     { title: "Profile", link: "/profile/" },
     { title: "Orders", link: "./orders" },
     { title: "Addresses", link: "./addresses" },
     { title: "Settings", link: "./settings" },
   ];
+  const navigate = useNavigate();
 
-  const setNavLink = (isActive) => {
+  useEffect(() => {
+    !token && navigate("/login");
+  }, []);
+  const setProfileLink = (isActive) => {
     return {
-      color: isActive ? "#0eafe9" : "",
+      color: isActive ? "#0ea5e9" : "#000000",
     };
   };
 
@@ -26,7 +32,7 @@ export const Profile = () => {
             {items.map(({ title, link }) => (
               <NavLink
                 key={title}
-                style={({ isActive }) => setNavLink(isActive)}
+                style={({ isActive }) => setProfileLink(isActive)}
                 to={link}
               >
                 <li className="sidebar-list-item pd-vrtl-sm mg-vrtl-sm">

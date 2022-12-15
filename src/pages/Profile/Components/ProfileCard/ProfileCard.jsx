@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useAuth } from "../../../../contexts/contextExport";
 import "./ProfileCard.css";
 
 export const ProfileCard = () => {
-  const { currentUser } = useAuth();
+  const { token, currentUser } = useAuth();
+  const navigate = useNavigate();
   const { firstName, lastName, email } = currentUser;
+  useEffect(() => {
+    !token && navigate("/login");
+  }, []);
 
   return (
     <div className="profile-detail pd-lg">

@@ -36,7 +36,7 @@ export const ProductsListCard = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="card flex-center pd-vrtl-sm">
+    <div className="card flex-center pd-sm">
       <div className="card-image-container">
         <Link to={`./${id}`}>
           <img className="image-responsive" src={imgSrc} alt="book product" />

@@ -2,6 +2,8 @@
   border-radius: 5px; 
   border: var(--card_border);
   background-color: var(--Color_White);
+  width: 100%;
+  max-width: 220px;
 }
 .rating {
   align-self: center;
