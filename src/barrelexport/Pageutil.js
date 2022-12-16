@@ -1,3 +1,5 @@
+export { Checkout } from "../pages/Checkout/Checkout";
+export { SingleProductPage } from "../pages/SingleProductPage/SingleProductPage";
 export { Profile } from "../pages/Profile/Profile";
 export { Login } from "../pages/Authentication/Login/Login";
 export { Signup } from "../pages/Authentication/Signup/Signup";

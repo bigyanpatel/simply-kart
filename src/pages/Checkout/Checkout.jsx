@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./checkout.css";
+import { useNavigate } from "react-router";
 import { RiCoupon3Fill } from "react-icons/ri";
-import { useAddress, useCart } from "../../contexts/contextExport";
+import {
+  useAddress,
+  useCart,
+  useAuth,
+  useOrder,
+} from "../../contexts/contextExport";
 import { Link } from "react-router-dom";
 import { billCalculate } from "../../helperFunctions/CartHelpers/billCalculate";
 import { Address } from "./components/Address";
+import axios from "axios";
 
 export const Checkout = () => {
   const {
     cartState: { cartData, coupon },
     cartDispatch,
   } = useCart();
-  const result = billCalculate(cartData);
-  const { currentPrice, discountPrice } = result;
-  const finalPrice = currentPrice - discountPrice;
   const {
     addressState: { addresses, mobile },
   } = useAddress();
+  const { orderDispatch } = useOrder();
+
+  const [paymentId, setPaymentId] = useState("");
+  const { token } = useAuth();
+
+  const result = billCalculate(cartData);
+  const { currentPrice, discountPrice } = result;
+  const finalPrice = currentPrice - discountPrice;
+
   const checkCoupon = Object.keys(coupon).length;
   const currentAddress = addresses?.find((item) => item.mobile === mobile);
-  const [paymentId, setPaymentId] = useState({
-    id: "",
-    isPaymentSuccess: false,
-  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    paymentId &&
+      setTimeout(() => {
+        navigate("/profile/orders");
+      }, 1000);
+  }, [paymentId]);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -38,6 +56,17 @@ export const Checkout = () => {
     });
   };
 
+  const clearCart = async () => {
+    cartData.forEach((item) =>
+      axios.delete(`/api/user/cart/${item._id}`, {
+        headers: {
+          authorization: token,
+        },
+      })
+    );
+    cartDispatch({ type: "CLEAR_CART" });
+  };
+
   const paymentDisplay = async () => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -50,18 +79,23 @@ export const Checkout = () => {
 
     const options = {
       key: "rzp_test_w3LARPAir5woBM", // Enter the Key ID generated from the Dashboard
-      amount: finalPrice * 100,
+      amount: (finalPrice - (checkCoupon ? coupon.amount : 0)) * 100,
       name: "Book hub",
       description: "Thanks from shopping, have a good day!",
       handler: function (response) {
-        setPaymentId({
-          id: response.razorpay_payment_id,
-          isPaymentSuccess: true,
+        orderDispatch({
+          type: "SET_ORDERS",
+          payload: {
+            order: {
+              orderData: cartData,
+              paymentId: response.razorpay_payment_id,
+              totalAmount: finalPrice - (checkCoupon ? coupon.amount : 0),
+              address: currentAddress,
+            },
+          },
         });
-        cartDispatch({
-          type: "CLEAR_CART",
-          payload: { coupon: {}, cartData: [] },
-        });
+        setPaymentId(response.razorpay_payment_id);
+        clearCart();
       },
       prefill: {
         name: "tom cruise",
@@ -79,7 +113,7 @@ export const Checkout = () => {
 
   return (
     <>
-      {!paymentId.isPaymentSuccess ? (
+      {!paymentId ? (
         <main className="main-container">
           <p className="main-heading fs-lg mg-md">Checkout</p>
           {cartData.length !== 0 ? (
@@ -148,14 +182,14 @@ export const Checkout = () => {
                   <p className="fs-btw-ml pd-vrtl-sm align-center">
                     Delivery at
                   </p>
-                  <p className="fs-btw-ml mg-top">{currentAddress.name}</p>
+                  <p className="fs-btw-ml mg-top">{currentAddress?.name}</p>
                   <p>
-                    <small>{currentAddress.street}, </small>
+                    <small>{currentAddress?.street}, </small>
                     <small>
-                      {currentAddress.city}, {currentAddress.state},{" "}
-                      {currentAddress.country}
+                      {currentAddress?.city}, {currentAddress?.state},{" "}
+                      {currentAddress?.country}
                     </small>
-                    <small>, {currentAddress.zipCode}</small>
+                    <small>, {currentAddress?.zipCode}</small>
                   </p>
                 </div>
                 <Link to="/checkout">
