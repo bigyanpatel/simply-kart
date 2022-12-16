@@ -4,6 +4,8 @@ export const orderReducer = (state, action) => {
         return {
           orders: [...state.orders, action.payload.order],
         };
+        case "CLEAR_ORDER":
+        return { orders: [] };
   
       default:
         return state;
