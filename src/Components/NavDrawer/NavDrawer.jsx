@@ -1,10 +1,10 @@
 import React from "react";
 import "./navdrawer.css";
 import { VscClose } from "react-icons/vsc";
-import { FaShoppingBag } from "react-icons/fa";
+import { FaAddressCard, FaShoppingBag } from "react-icons/fa";
 import { ImHome3 } from "react-icons/im";
 import { NavLink } from "react-router-dom";
-import { FiLogIn, FiUser } from "react-icons/fi";
+import { FiList, FiLogIn, FiSettings, FiUser } from "react-icons/fi";
 import { useClickOutside } from "../../Hooks/useClickOutSide";
 import { setNavLink } from "../../helperFunctions/setNavLink";
 
@@ -35,6 +35,33 @@ export const NavDrawer = ({ setIsOpen }) => {
           <div className="nav-modal-item pointer">
             <FiUser className="fs-md" />
             <p className="fs-md">Profile</p>
+          </div>
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => setNavLink(isActive)}
+          to="/profile/orders"
+        >
+          <div className="nav-modal-item pointer">
+            <FiList className="fs-md" />
+            <p className="fs-md">Orders</p>
+          </div>
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => setNavLink(isActive)}
+          to="/profile/addresses"
+        >
+          <div className="nav-modal-item pointer">
+            <FaAddressCard className="fs-md" />
+            <p className="fs-md">Addresses</p>
+          </div>
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => setNavLink(isActive)}
+          to="/profile/settings"
+        >
+          <div className="nav-modal-item pointer">
+            <FiSettings className="fs-md" />
+            <p className="fs-md">Settings</p>
           </div>
         </NavLink>
         <NavLink style={({ isActive }) => setNavLink(isActive)} to="/login">
