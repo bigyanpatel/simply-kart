@@ -94,6 +94,7 @@
     width: 100vw;
     padding: 1rem;
     position: fixed;
+    margin-top: 6rem;
     top: 0;
     background-color: var(--Color_White);
   }
