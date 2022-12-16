@@ -1,6 +1,5 @@
 import React from "react";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
-import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
 import { useDataStore } from "../../../contexts/DataStoreContext";
@@ -35,17 +34,6 @@ export const CartCard = ({ cartItem }) => {
           <span className="card-discount">{discount}%off</span>
         </p>
         <div className="quantity-count">
-          <button
-            onClick={() =>
-              updateCartItemQuantity(token, _id, "increment", cartDispatch)
-            }
-            className="button-count-plus"
-          >
-            <span className="flex">
-              <FiPlus />
-            </span>
-          </button>
-          <p className="quantity-value">{qty}</p>
           {cartItem.qty > 1 ? (
             <button
               onClick={() =>
@@ -69,6 +57,17 @@ export const CartCard = ({ cartItem }) => {
               </span>
             </button>
           )}
+          <p className="quantity-value">{qty}</p>
+          <button
+            onClick={() =>
+              updateCartItemQuantity(token, _id, "increment", cartDispatch)
+            }
+            className="button-count-plus"
+          >
+            <span className="flex">
+              <FiPlus />
+            </span>
+          </button>
         </div>
         <div className="card-button-container mt">
           {wishListData.find((item) => item._id === cartItem._id) ? (

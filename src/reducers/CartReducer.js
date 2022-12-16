@@ -14,11 +14,19 @@ const cartReducer = (state, action) => {
         ...state,
         coupon: action.payload.coupon,
       };
+      case "PAYMENT":
+        return {
+          ...state,
+          paymentId: action.payload.paymentId,
+          isPaymentDone: true,
+        };
     
       case "CLEAR_CART":
       return {
-        coupon: action.payload.coupon,
-        cartData: action.payload.cartData,
+        coupon: {},
+        cartData: [],
+        isPaymentDone: false,
+        paymentId: "",
       };
       
     default:

@@ -8,6 +8,9 @@ const wishListReducer = (state, action) => {
   
       case "REMOVE_FROM_WISHLIST":
         return { wishListData: action.payload };
+
+      case "CLEAR_WISHLIST":
+        return { wishListData: [] };
   
       default:
         return state;

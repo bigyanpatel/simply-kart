@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAddress } from "../../../contexts/AddressContext";
 import "./address.css";
 
 export const Address = ({ address }) => {
-  console.log(address);
   const { addressDispatch } = useAddress();
 
   return (

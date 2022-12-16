@@ -10,15 +10,15 @@ import {
   Home,
   Profile,
   PageNotFound,
+  SingleProductPage,
+  Checkout,
 } from "../../barrelexport/Pageutil";
-import { Checkout } from "../../pages/Checkout/Checkout";
 import {
   Settings,
   ProfileCard,
   Addresses,
   Orders,
 } from "../../pages/Profile/profilePageExport";
-import { SingleProductPage } from "../../pages/SingleProductPage/SingleProductPage";
 
 export const AppRoute = () => {
   return (
