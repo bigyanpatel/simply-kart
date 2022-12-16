@@ -1,17 +1,23 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { Navbar } from "../../../barrelexport/Componentutil";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
 import "./Login.css";
 
 export const Login = () => {
+  const [signinData, setSigningData] = useState({ email: "", password: "" });
   const { passwordToggle, togglePassword } = useTogglePassword();
-  const { loginHandler, signinData } = useAuth();
-  const { email, password } = signinData;
+  const { loginHandler } = useAuth();
+
+  const dummyLogin = () => {
+    setSigningData({
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    });
+    loginHandler();
+  };
 
   return (
     <div className="flex-center">
@@ -21,7 +27,7 @@ export const Login = () => {
           <div className="input-icon-container input-primary">
             <AiOutlineMail className="fs-lg" />
             <input
-              value={email}
+              value={signinData.email}
               required
               name="email"
               type="email"
@@ -32,7 +38,7 @@ export const Login = () => {
           <div className="input-icon-container input-primary">
             <AiOutlineLock className="fs-lg" />
             <input
-              value={password}
+              value={signinData.password}
               required
               name="password"
               type={passwordToggle.type}
@@ -56,7 +62,11 @@ export const Login = () => {
             <a className="forgot-link cursor">Forgot Password?</a>
           </div>
           <div className="btn-area">
-            <button onClick={loginHandler} className="btn is-secondary">
+            <button
+              type="button"
+              onClick={dummyLogin}
+              className="btn is-secondary"
+            >
               Login With Test Credentials.
             </button>
             <button onClick={loginHandler} className="btn is-solid">

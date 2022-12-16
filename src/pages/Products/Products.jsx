@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Filter, ProductsListCard } from "../../barrelexport/Componentutil";
 import {
   getFilterByPrice,
@@ -41,7 +41,7 @@ export const Products = () => {
           ))}
         </div>
       ) : (
-        <p className="fs-lg">No books available</p>
+        <p className="fs-lg center-text m-hr-auto">No books available</p>
       )}
     </main>
   );

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { RiCoupon3Fill } from "react-icons/ri";
-import { CartCard } from "../../barrelexport/Componentutil";
+import { FiTrash2 } from "react-icons/fi";
+import { CartCard, Coupon } from "../../barrelexport/Componentutil";
 import { useCart } from "../../contexts/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { billCalculate } from "../../helperFunctions/CartHelpers/billCalculate";
 import { useAuth } from "../../contexts/AuthContext";
-import { Coupon } from "./Components/Coupon";
-import { FiTrash2 } from "react-icons/fi";
 
 export const Cart = () => {
   const navigate = useNavigate();
@@ -16,6 +15,7 @@ export const Cart = () => {
     cartState: { cartData, coupon },
     cartDispatch,
   } = useCart();
+
   const result = billCalculate(cartData);
   const { currentPrice, discountPrice } = result;
   const finalPrice = currentPrice - discountPrice;
@@ -35,8 +35,9 @@ export const Cart = () => {
         )}
         {cartData.length !== 0 && (
           <p className="main-heading fs-lg mg-md">
-            My cart has products ({cartData.length})
-          </p>
+            Your cart has {cartData.length}
+            {cartData.length > 1 ? " products" : " product"}
+            </p>
         )}
         {cartData.length !== 0 ? (
           <div className="cart-container">
@@ -60,7 +61,10 @@ export const Cart = () => {
               </div>
               <div className="bill-info">
                 <div className="row-detail">
-                  <p className="col-80">Price ({cartData.length} items)</p>
+                <p className="col-80">
+                    Price ({cartData.length}{" "}
+                    {cartData.length > 1 ? "items" : "item"})
+                  </p>
                   <p className="col-20">{currentPrice}₹</p>
                 </div>
                 <div className="row-detail">

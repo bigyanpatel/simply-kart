@@ -1,12 +1,33 @@
 import React from "react";
-import { useAuth } from "../../../contexts/contextExport";
+import { useNavigate } from "react-router";
+import {
+  useCart,
+  useWishList,
+  useOrder,
+  useDataStore,
+} from "../../../contexts/contextExport";
+import { logoutHandler } from "../../../handlers/LogOutHandler";
 
 export const Settings = () => {
-  const { logoutHandler } = useAuth();
-
+  const navigate = useNavigate();
+  const { cartDispatch } = useCart();
+  const { wishListDispatch } = useWishList();
+  const { toastProps } = useDataStore();
+  const { orderDispatch } = useOrder();
   return (
     <div className="pd-lg">
-      <button onClick={logoutHandler} className="btn is-solid fs-btw-ml">
+      <button
+        onClick={() =>
+          logoutHandler(
+            navigate,
+            cartDispatch,
+            toastProps,
+            wishListDispatch,
+            orderDispatch
+          )
+        }
+        className="btn is-solid "
+      >
         Log Out
       </button>
     </div>

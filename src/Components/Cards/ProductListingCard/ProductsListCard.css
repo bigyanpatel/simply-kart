@@ -1,19 +1,19 @@
 .card {
-  border-radius: 5px; 
+  border-radius: 5px;
   border: var(--card_border);
   background-color: var(--Color_White);
   width: 100%;
-  max-width: 220px;
+  max-width: 15rem;
 }
 .rating {
   align-self: center;
 }
 .filled-favourites {
-  color: var(--Color_Danger_500);
+  color: var(--Primary_Color);
 }
 .favourites:hover {
   transition: 0.3s ease-in;
-  background-color: var(--Color_Danger_200);
+  background-color: var(--Color_Info_200);
 }
 .image-responsive {
   width: auto;
@@ -39,5 +39,5 @@
   position: relative;
 }
 .favourites {
-  color: var(--Color_Danger_500);
+  color: var(--Primary_Color);
 }

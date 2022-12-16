@@ -1,3 +1,7 @@
 .address-detail p:first-child {
     border-bottom: 1px solid var(--Primary_Color);
   }
+  .order-msg {
+    width: 100vw;
+    height: calc(100vh - 7rem);
+  }

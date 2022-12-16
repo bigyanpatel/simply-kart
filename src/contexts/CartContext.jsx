@@ -6,6 +6,8 @@ const CartContext = createContext();
 const cartInitialState = {
   cartData: [],
   coupon: {},
+  isPamymentDone: false,
+  paymentId: "",
 };
 
 const CartProvider = ({ children }) => {

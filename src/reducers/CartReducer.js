@@ -1,8 +1,5 @@
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "GET_INITIAL_WISHLIST":
-      return { ...state, cartData: action.payload };
-
     case "ADD_TO_CART":
       return { ...state, cartData: action.payload };
 
@@ -17,7 +14,21 @@ const cartReducer = (state, action) => {
         ...state,
         coupon: action.payload.coupon,
       };
-
+      case "PAYMENT":
+        return {
+          ...state,
+          paymentId: action.payload.paymentId,
+          isPaymentDone: true,
+        };
+    
+      case "CLEAR_CART":
+      return {
+        coupon: {},
+        cartData: [],
+        isPaymentDone: false,
+        paymentId: "",
+      };
+      
     default:
       return state;
   }

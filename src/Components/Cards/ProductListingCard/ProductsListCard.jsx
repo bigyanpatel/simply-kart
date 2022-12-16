@@ -29,14 +29,16 @@ export const ProductsListCard = ({ product }) => {
   } = product;
   const { token } = useAuth();
   const { wishListState, wishListDispatch } = useWishList();
-  const { cartState, cartDispatch } = useCart();
+  const {
+    cartState: { cartData },
+    cartDispatch,
+  } = useCart();
   const { toastProps } = useDataStore();
-  const { cartData } = cartState;
   const { wishListData } = wishListState;
   const navigate = useNavigate();
 
   return (
-    <div className="card flex-center pd-sm">
+    <div className="card flex-center pd-sm mg-hztl-md">
       <div className="card-image-container">
       <Link to={`/products/${id}`}>
           <img className="image-responsive" src={imgSrc} alt="book product" />

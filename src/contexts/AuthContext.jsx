@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext} from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDataStore } from "./DataStoreContext";
@@ -12,10 +12,6 @@ const AuthContextProvider = ({ children }) => {
   const token = localStorageToken?.token || "";
   const currentUser = localStorageToken?.user || "";
   const { toastProps } = useDataStore();
-  const [signinData, setSigningData] = useState({
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-  });
 
   const navigate = useNavigate();
 
@@ -35,7 +31,10 @@ const AuthContextProvider = ({ children }) => {
 
   const loginHandler = async () => {
     try {
-      const { data } = await axios.post("/api/auth/login", signinData);
+      const { data } = await axios.post("/api/auth/login", {
+        email: "adarshbalika@gmail.com",
+        password: "adarshbalika",
+      });
       localStorage.setItem(
         "loginToken",
         JSON.stringify({ token: data.encodedToken, user: data.foundUser })
@@ -47,14 +46,6 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const logoutHandler = () => {
-    setTimeout(() => {
-      localStorage.removeItem("loginToken");
-      toast.warn("User logged out!!", toastProps);
-      navigate("/");
-    }, 1000);
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -62,8 +53,6 @@ const AuthContextProvider = ({ children }) => {
         currentUser,
         loginHandler,
         signupHandler,
-        signinData,
-        logoutHandler,
       }}
     >
       {children}

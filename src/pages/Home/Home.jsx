@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Introimage from "../../assets/Introimage.svg";
-import { Navbar, HomeCard } from "../../barrelexport/Componentutil";
+import { HomeCard } from "../../barrelexport/Componentutil";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDataStore } from "../../contexts/DataStoreContext";
@@ -11,7 +11,6 @@ import { initialState } from "../../barrelexport/Filterutil";
 export const Home = () => {
   const { categories, setCategories, products, setProducts } = useDataStore();
   const { filterDispatch } = useFilter();
-
   const [error, setError] = useState("");
 
   useEffect(() => {

@@ -1,0 +1,18 @@
+.primary-clr {
+    color: var(--Primary_Color);
+  }
+  .secondary-clr {
+    color: var(--Secondary_Color);
+  }
+  .product-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .product-data {
+    padding-left: 1rem;
+  }
+  
+  .product-img {
+    max-width: 20%;
+  }
