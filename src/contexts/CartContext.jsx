@@ -5,6 +5,7 @@ const CartContext = createContext();
 
 const cartInitialState = {
   cartData: [],
+  coupon: {},
 };
 
 const CartProvider = ({ children }) => {

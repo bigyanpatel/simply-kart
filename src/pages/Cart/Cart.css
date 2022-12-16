@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 30rem));
   justify-content: center;
+  align-items: flex-start;
   gap: 10px 20px;
 }
 .card-item {
@@ -10,13 +11,26 @@
 }
 
 /* Bill item */
+.w-100 {
+  width: 100%;
+}
+.coupon-area {
+  border: var(--card_border);
+  color: var(--Primary_Color);
+  margin-bottom: 5px;
+}
+.coupon-area button {
+  color: var(--Color_Black);
+}
+.coupon-area button:hover {
+  color: var(--Primary_Color);
+}
+
 
 .bill {
   margin: 0 1rem;
   background-color: var(--Color_White);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .bill-heading {
