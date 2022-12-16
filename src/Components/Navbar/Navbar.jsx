@@ -6,7 +6,7 @@ import {
   FiShoppingCart,
   FiUser,
 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   useAuth,
   useCart,
@@ -19,6 +19,7 @@ import { FaShoppingBag } from "react-icons/fa";
 import "./Navbar.css";
 import { initialState } from "../../barrelexport/Filterutil";
 import { NavDrawer } from "../NavDrawer/NavDrawer";
+import { setProfileLink } from "../../helperFunctions/SetProfileNavlink";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,24 @@ export const Navbar = () => {
   const { filterDispatch } = useFilter();
   const { setSearchText } = useDataStore();
 
+  const searchHandler = (e) => {
+    navigate("/products");
+    filterDispatch({ type: "CLEAR_ALL", payload: initialState });
+    setSearchText(e.target.value);
+  };
+
+  const debounce = (cb, delay) => {
+    let timer;
+    return (e) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = cb(e);
+      }, delay);
+    };
+  };
+
+  const searchProcess = debounce(searchHandler, 500);
+
   return (
     <nav className="navigation">
       {isOpen && <NavDrawer setIsOpen={setIsOpen} />}
@@ -46,18 +65,21 @@ export const Navbar = () => {
           <p className="logo-text fs-xlg">SimplyKart</p>
         </Link>
         <div className="quick-link">
-          <Link to="/">
+          <NavLink to="/" style={({ isActive }) => setProfileLink(isActive)}>
             <div className="nav-item mg-hztl-md">
               <ImHome3 />
               <small className="fs-md">Home</small>
             </div>
-          </Link>
-          <Link to="/products">
+          </NavLink>
+          <NavLink
+            to="/products"
+            style={({ isActive }) => setProfileLink(isActive)}
+          >
             <div className="nav-item">
               <FaShoppingBag />
               <small className="fs-md">Shop Now</small>
             </div>
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="search-bar">
@@ -68,11 +90,7 @@ export const Navbar = () => {
           className="search-input"
           type="text"
           placeholder="Search book..."
-          onChange={(e) => {
-            navigate("/products");
-            filterDispatch({ type: "CLEAR_ALL", payload: initialState });
-            setSearchText(e.target.value);
-          }}
+          onChange={searchProcess}
         />
       </div>
       <div className="nav-right-section">
