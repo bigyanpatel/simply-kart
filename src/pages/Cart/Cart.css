@@ -34,7 +34,6 @@
 }
 
 .bill-heading {
-  padding: 0 0 1rem 0;
   border-bottom: 1px solid var(--Primary_Color);
 }
 .bill-heading h3 {

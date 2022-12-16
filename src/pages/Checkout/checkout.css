@@ -1,0 +1,3 @@
+.address-detail p:first-child {
+    border-bottom: 1px solid var(--Primary_Color);
+  }

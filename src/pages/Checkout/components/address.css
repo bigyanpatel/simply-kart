@@ -1,0 +1,6 @@
+.address-label {
+    border: var(--card_border);
+    display: flex;
+    align-items: flex-start;
+    user-select: none;
+  }

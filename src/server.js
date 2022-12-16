@@ -69,8 +69,8 @@ export function makeServer({ environment = "development" } = {}) {
               city: "London",
               state: "United kingdom",
               country: "America",
-              zipCode: "207814",
-              mobile: "9481382237",
+              zipCode: 207814,
+              mobile: 9481382237,
             },
           ],
         })

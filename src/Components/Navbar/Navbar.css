@@ -1,7 +1,10 @@
 .navigation {
   box-shadow: var(--navbar_shadow);
   justify-content: space-between;
-  position: relative;
+  background-color: var(--Color_White);
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 .secondary-list {
   padding: 0 20px;
@@ -69,7 +72,7 @@
   .profile-sidebar {
     display: none;
   }
-  
+
   .search-bar {
     box-sizing: border-box;
     position: absolute;

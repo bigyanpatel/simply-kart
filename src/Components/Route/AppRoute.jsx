@@ -11,7 +11,7 @@ import {
   Profile,
   PageNotFound,
 } from "../../barrelexport/Pageutil";
-import { useAuth } from "../../contexts/AuthContext";
+import { Checkout } from "../../pages/Checkout/Checkout";
 import {
   Settings,
   ProfileCard,
@@ -32,6 +32,7 @@ export const AppRoute = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="mockman" element={<MockmanEs />} />
         <Route path="products/:productId" element={<SingleProductPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile/" element={<Profile />}>
           <Route path="" element={<ProfileCard />} />
           <Route path="addresses" element={<Addresses />} />
