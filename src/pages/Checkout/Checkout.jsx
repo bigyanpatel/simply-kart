@@ -80,7 +80,7 @@ export const Checkout = () => {
     const options = {
       key: "rzp_test_w3LARPAir5woBM", // Enter the Key ID generated from the Dashboard
       amount: (finalPrice - (checkCoupon ? coupon.amount : 0)) * 100,
-      name: "Book hub",
+      name: "SimplyKart",
       description: "Thanks from shopping, have a good day!",
       handler: function (response) {
         orderDispatch({
