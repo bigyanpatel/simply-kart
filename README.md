@@ -70,9 +70,9 @@ SimplyKart is an online E-commerce app for **books**
 <a name="images"/>
 
 #### Images
-![image](https://user-images.githubusercontent.com/75557011/162362322-b23ce0bf-2fb4-4e62-9d4a-d5a9559c8484.png)
-![image](https://user-images.githubusercontent.com/75557011/162362446-234d3491-15f2-491c-b88b-112fc2a9e54f.png)
-![image](https://user-images.githubusercontent.com/75557011/162362551-c40f9365-600c-4b3f-95d7-346f141266fd.png)
+![image](https://user-images.githubusercontent.com/86798277/212819619-5e640b35-42ec-4356-9c65-ae8841ce216e.png)
+![image](https://user-images.githubusercontent.com/86798277/212819650-82cac765-a167-410c-b6f9-c9aca772e492.png)
+![image](https://user-images.githubusercontent.com/86798277/212819685-c8aafbad-872d-45f4-8513-ab1306a7ef5d.png)
 
 ***
 <a name="link"/>
@@ -99,7 +99,7 @@ SimplyKart is an online E-commerce app for **books**
 <a name="introduction"/>
 
 #### Introduction
-* Hey developers, I'm Bigyan, a passionate frontend developer. Check out my [Portfolio](https://bigyanpatel2.netlify.app/)
+* Hey developers, I'm Bigyan, a passionate frontend developer. Check out my [Portfolio](https://bigyanpatel.vercel.app/)
 
 <a name="social-media"/>
 
